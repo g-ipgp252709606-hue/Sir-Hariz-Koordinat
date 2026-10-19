@@ -3,100 +3,481 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aplikasi Permainan Koordinat Matematik</title>
+<title>Pengembaraan Koordinat & Misi Lanun</title>
 <style>
+:root{
+ --navy:#102746;--ink:#20334f;--cream:#fff9e9;--gold:#ffd166;--coral:#ff786b;
+ --teal:#42d6c4;--purple:#8b72f8;--sky:#9be7ff;--green:#42c987;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);
+ background:radial-gradient(circle at 10% 10%,#d8fbff 0,transparent 30%),linear-gradient(135deg,#f9edce,#d5f5e9 55%,#d9d4ff);min-height:100vh}
 button{font:inherit;cursor:pointer;border:0;transition:transform .15s,filter .15s}
 button:hover{transform:translateY(-2px);filter:brightness(1.04)}
+button:focus-visible{outline:3px solid #162b49;outline-offset:3px}
 
-/* BAR PERTUKARAN PERMAINAN (STICKY ATAS) */
-.top-game-switcher {
-  background: #09203f;
-  padding: 10px 16px;
+/* BAR PILIHAN PERMAINAN */
+.game-selector-bar {
+  background: #0f2b48;
+  padding: 12px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
   position: sticky;
   top: 0;
-  z-index: 99999;
-  border-bottom: 2px solid #1e456e;
+  z-index: 9999;
 }
-.top-game-switcher span {
+.game-selector-bar span {
   color: #fff;
   font-weight: 800;
   font-size: 14px;
 }
-.switcher-btn {
-  background: #173b60;
-  color: #d1e8ff;
-  border: 2px solid #366493;
-  padding: 8px 16px;
+.mode-btn {
+  background: #1e456e;
+  color: #e2f1ff;
+  border: 2px solid #3c6e9c;
+  padding: 8px 18px;
   border-radius: 20px;
   font-weight: 800;
   font-size: 13px;
   cursor: pointer;
 }
-.switcher-btn.active {
-  background: #ffd166;
-  color: #4a3000;
+.mode-btn.active {
+  background: var(--gold);
+  color: #573600;
   border-color: #ffffff;
   box-shadow: 0 0 10px rgba(255, 209, 102, 0.6);
 }
 
-.game-wrapper { display: none; }
-.game-wrapper.active { display: block; }
+.game-container {
+  display: none;
+}
+.game-container.active-game {
+  display: block;
+}
 
-/* =========================================================
-   STYLE PERMAINAN 1 (MISI PENYELAMAT DUNIA)
-   ========================================================= */
-#game1-root {
-  --navy:#102746;--ink:#20334f;--cream:#fff9e9;--gold:#ffd166;--coral:#ff786b;
-  --teal:#42d6c4;--purple:#8b72f8;--sky:#9be7ff;--green:#42c987;
-  color:var(--ink);
-  background:radial-gradient(circle at 10% 10%,#d8fbff 0,transparent 30%),linear-gradient(135deg,#f9edce,#d5f5e9 55%,#d9d4ff);
-  min-height: calc(100vh - 54px);
+/* GAME 1 STYLES */
+.app1{max-width:1120px;margin:auto;padding:18px}
+.app1 .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
+.app1 .brand{font-weight:950;letter-spacing:.4px;font-size:clamp(16px,3vw,22px);color:#17385a}
+.app1 .brand span{display:inline-grid;place-items:center;background:var(--gold);border-radius:12px;padding:7px;margin-right:7px}
+.app1 .top-actions{display:flex;gap:8px;flex-wrap:wrap}
+.app1 .pill{border:2px solid #ffffffaa;background:#ffffffb8;border-radius:999px;padding:9px 13px;font-weight:800;color:#28405f}
+.app1 .screen{display:none;animation:enter .25s ease}
+.app1 .screen.active{display:block}
+@keyframes enter{from{opacity:.2;transform:translateY(7px)}to{opacity:1;transform:none}}
+.app1 .panel{background:#ffffffd9;border:2px solid #fff;border-radius:25px;padding:clamp(18px,3vw,30px);box-shadow:0 16px 35px #344d7020}
+.app1 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;min-height:490px;overflow:hidden;position:relative}
+.app1 .eyebrow{display:inline-block;background:#dcfff4;color:#16755e;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.7px}
+.app1 h1{font-size:clamp(36px,6vw,67px);line-height:.98;letter-spacing:-2px;margin:17px 0 14px;color:#153b62}
+.app1 h1 em{font-style:normal;color:#f06d56}
+.app1 h2{margin:0 0 10px;font-size:clamp(25px,4vw,36px);color:#183b60}
+.app1 h3{margin:0 0 8px}
+.app1 .lead{font-size:17px;line-height:1.65;color:#526780;max-width:560px}
+.app1 .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}
+.app1 .btn{border-radius:14px;padding:13px 18px;font-weight:900;box-shadow:0 5px 0 #172d4720}
+.app1 .btn.primary{background:var(--coral);color:white}
+.app1 .btn.secondary{background:#e7e1ff;color:#4d3aa5}
+.app1 .btn.green{background:var(--green);color:#083f30}
+.app1 .btn.gold{background:var(--gold);color:#68410c}
+.app1 .btn.dark{background:#193b5f;color:white}
+.app1 .art{min-height:340px;display:grid;place-items:center;position:relative}
+.app1 .island{width:min(100%,400px);aspect-ratio:1;border-radius:48% 52% 45% 55%;background:linear-gradient(150deg,#b5f3c6 0 28%,#55cba5 29% 53%,#219e9c 54%);border:9px solid #fff;box-shadow:0 15px 0 #2b897b30;position:relative;transform:rotate(-5deg)}
+.app1 .island:before{content:"";position:absolute;inset:14% 13% 18% 19%;background:#f7d891;border-radius:50%;transform:rotate(25deg)}
+.app1 .palm{position:absolute;font-size:clamp(36px,7vw,65px);filter:drop-shadow(0 4px 0 #244d4530)}
+.app1 .palm.p1{top:10%;left:13%}.app1 .palm.p2{right:9%;top:28%}.app1 .palm.p3{left:30%;bottom:7%}
+.app1 .treasure{position:absolute;top:42%;left:41%;font-size:clamp(60px,9vw,90px);transform:rotate(5deg);filter:drop-shadow(0 8px 0 #6a4b2625);animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-9px) rotate(5deg)}}
+.app1 .cloud{position:absolute;font-size:44px;opacity:.85}.app1 .cloud.c1{top:5%;right:2%}.app1 .cloud.c2{left:0;bottom:10%}
+.app1 .feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.app1 .feature{padding:17px;border-radius:18px;background:#ffffffb8;border:1px solid #fff}
+.app1 .feature b{display:block;margin:6px 0}.app1 .feature span{font-size:13px;color:#60728a;line-height:1.4}
+.app1 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin-bottom:20px}
+.app1 .muted{color:#61738b;line-height:1.55}
+.app1 .worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.app1 .world-card{border-radius:22px;padding:20px;border:2px solid #fff;min-height:225px;display:flex;flex-direction:column;align-items:flex-start;box-shadow:0 9px 20px #263d5810}
+.app1 .world-card.forest{background:linear-gradient(145deg,#d7f8c9,#8de0a6)}
+.app1 .world-card.treasure-world{background:linear-gradient(145deg,#fff0bd,#ffc879)}
+.app1 .world-card.space{background:linear-gradient(145deg,#dcd8ff,#9da9ff)}
+.app1 .world-icon{font-size:48px;margin-bottom:10px}
+.app1 .world-card p{color:#53667c;font-size:14px;line-height:1.45;flex:1}
+.app1 .world-card button{width:100%;padding:11px;border-radius:12px;background:#173b60;color:white;font-weight:850}
+.app1 .world-card.locked{filter:grayscale(.45);opacity:.7}
+.app1 .badge{display:inline-block;padding:5px 9px;background:#ffffffb9;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:9px}
+.app1 .game-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:18px}
+.app1 .game-board{background:#f5fbff;border:2px solid #d9e9f6;border-radius:18px;padding:15px}
+.app1 .col-labels{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:0 0 5px 27px;text-align:center;font-weight:950;color:#365b83}
+.app1 .board-line{display:grid;grid-template-columns:23px 1fr;gap:4px}
+.app1 .row-labels{display:grid;grid-template-rows:repeat(6,1fr);gap:4px;text-align:center;font-weight:950;color:#365b83}
+.app1 .row-labels span{display:grid;place-items:center}
+.app1 .grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.app1 .cell{aspect-ratio:1;border-radius:8px;border:2px solid #d2e2ef;background:white;display:grid;place-items:center;font-size:clamp(17px,3.8vw,30px);min-width:0}
+.app1 .cell.pickable:hover{background:#e8fff7;border-color:#42c987}
+.app1 .cell.target{background:#ffedaa;border-color:#f4c34e}
+.app1 .cell.player{background:#bdf3df;border-color:#52c99b}
+.app1 .cell.obstacle{background:#ffd5cc;border-color:#f59b8a}
+.app1 .cell.visited{background:#dcecff}
+.app1 .cell:disabled{cursor:default}
+.app1 .side-panel{display:flex;flex-direction:column;gap:12px}
+.app1 .mission-box{background:#fff5d8;border:2px solid #ffe3a0;border-radius:17px;padding:17px}
+.app1 .mission-title{font-weight:950;color:#805018;font-size:13px;text-transform:uppercase;letter-spacing:.7px}
+.app1 .target-big{font-size:35px;font-weight:1000;color:#e66b4f;margin:6px 0}
+.app1 .progressline{height:9px;border-radius:999px;background:#e5ebf2;overflow:hidden;margin-top:10px}
+.app1 .progressline div{height:100%;background:linear-gradient(90deg,#42c987,#6e8cf7);width:0;transition:width .25s}
+.app1 .feedback{min-height:50px;border-radius:13px;background:#f0f5ff;padding:12px;font-weight:750;line-height:1.4}
+.app1 .controls{display:flex;gap:8px;flex-wrap:wrap}
+.app1 .controls .btn{flex:1;padding:11px 12px}
+.app1 .small{font-size:12px;color:#66788e}
+.app1 .center{text-align:center}
+.app1 .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.app1 .stat-card{padding:18px;border-radius:18px;background:#f0edff;text-align:center}
+.app1 .stat-card strong{display:block;font-size:30px;color:#6546c8}
+.app1 .badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:20px 0}
+.app1 .badge-trophy{padding:14px;border-radius:16px;background:#fff2c8;border:2px solid #ffe3a0;font-weight:850}
+.app1 .instructions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.app1 .step{background:#f4f7ff;border-radius:16px;padding:17px}
+.app1 .step .num{width:32px;height:32px;border-radius:10px;background:#dcd5ff;display:grid;place-items:center;font-weight:950;margin-bottom:9px}
+.app1 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#173b60;color:#fff;padding:12px 18px;border-radius:999px;font-weight:800;box-shadow:0 8px 25px #142a4530;display:none;z-index:999}
+.app1 footer{text-align:center;color:#657891;font-size:12px;padding:22px 5px}
+@media(max-width:760px){
+ .app1 .hero{grid-template-columns:1fr;min-height:auto}.app1 .art{min-height:260px;grid-row:1}
+ .app1 .island{width:260px}.app1 .feature-row,.app1 .worlds,.app1 .instructions{grid-template-columns:1fr}
+ .app1 .game-layout{grid-template-columns:1fr}.app1 .section-head{align-items:flex-start;flex-direction:column}
+ .app1 .stats-grid{grid-template-columns:1fr 1fr 1fr}.app1{padding:12px}
+}
+
+/* GAME 2 STYLES */
+.app2-body {
+  background:linear-gradient(180deg,#45c9f5 0%,#0788c8 52%,#045b8d 100%);
+  min-height:100vh;
+  color:#fff;
   padding-bottom: 20px;
 }
-.g1-app{max-width:1120px;margin:auto;padding:18px}
-.g1-topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
-.g1-brand{font-weight:950;letter-spacing:.4px;font-size:clamp(16px,3vw,22px);color:#17385a}
-.g1-brand span{display:inline-grid;place-items:center;background:var(--gold);border-radius:12px;padding:7px;margin-right:7px}
-.g1-top-actions{display:flex;gap:8px;flex-wrap:wrap}
-.g1-pill{border:2px solid #ffffffaa;background:#ffffffb8;border-radius:999px;padding:9px 13px;font-weight:800;color:#28405f}
-.g1-screen{display:none;animation:g1-enter .25s ease}
-.g1-screen.active{display:block}
-@keyframes g1-enter{from{opacity:.2;transform:translateY(7px)}to{opacity:1;transform:none}}
-.g1-panel{background:#ffffffd9;border:2px solid #fff;border-radius:25px;padding:clamp(18px,3vw,30px);box-shadow:0 16px 35px #344d7020}
-.g1-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;min-height:490px;overflow:hidden;position:relative}
-.g1-eyebrow{display:inline-block;background:#dcfff4;color:#16755e;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.7px}
-.g1-hero h1{font-size:clamp(36px,6vw,67px);line-height:.98;letter-spacing:-2px;margin:17px 0 14px;color:#153b62}
-.g1-hero h1 em{font-style:normal;color:#f06d56}
-.g1-panel h2{margin:0 0 10px;font-size:clamp(25px,4vw,36px);color:#183b60}
-.g1-lead{font-size:17px;line-height:1.65;color:#526780;max-width:560px}
-.g1-btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}
-.g1-btn{border-radius:14px;padding:13px 18px;font-weight:900;box-shadow:0 5px 0 #172d4720}
-.g1-btn.primary{background:var(--coral);color:white}
-.g1-btn.secondary{background:#e7e1ff;color:#4d3aa5}
-.g1-btn.gold{background:var(--gold);color:#68410c}
-.g1-art{min-height:340px;display:grid;place-items:center;position:relative}
-.g1-island{width:min(100%,400px);aspect-ratio:1;border-radius:48% 52% 45% 55%;background:linear-gradient(150deg,#b5f3c6 0 28%,#55cba5 29% 53%,#219e9c 54%);border:9px solid #fff;box-shadow:0 15px 0 #2b897b30;position:relative;transform:rotate(-5deg)}
-.g1-island:before{content:"";position:absolute;inset:14% 13% 18% 19%;background:#f7d891;border-radius:50%;transform:rotate(25deg)}
-.g1-palm{position:absolute;font-size:clamp(36px,7vw,65px);filter:drop-shadow(0 4px 0 #244d4530)}
-.g1-palm.p1{top:10%;left:13%}.g1-palm.p2{right:9%;top:28%}.g1-palm.p3{left:30%;bottom:7%}
-.g1-treasure{position:absolute;top:42%;left:41%;font-size:clamp(60px,9vw,90px);transform:rotate(5deg);filter:drop-shadow(0 8px 0 #6a4b2625);animation:g1-bob 2s ease-in-out infinite}
-@keyframes g1-bob{50%{transform:translateY(-9px) rotate(5deg)}}
-.g1-cloud{position:absolute;font-size:44px;opacity:.85}.g1-cloud.c1{top:5%;right:2%}.g1-cloud.c2{left:0;bottom:10%}
-.g1-feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-.g1-feature{padding:17px;border-radius:18px;background:#ffffffb8;border:1px solid #fff}
-.g1-feature b{display:block;margin:6px 0}.g1-feature span{font-size:13px;color:#60728a;line-height:1.4}
-.g1-section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin-bottom:20px}
-.g1-muted{color:#61738b;line-height:1.55}
-.g1-worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.g1-world-card{border-radius:22px;padding:20px;border:2px solid #fff;min-height:225px;display:flex;flex-direction:column;align-items:flex-start;box-shadow:0 9px 20px #263d5810}
-.g1-world-card.forest{background:linear-gradient(145deg,#d7f8c9,#8de0a6)}
-.g1-world-card.treasure-world{background:linear-gradient(145deg,#fff0bd,#ffc879)}
-.g1-world-card.space{background:linear-gradient(145deg,#dcd8ff,#9da9ff)}
-.g1-world-icon{font-size:48px;margin-bottom:10px}
-.g1-world-card p{color:#53667c;font-
+.app2-body .top{max-width:1450px;margin:0 auto;padding:18px 18px 8px;display:flex;align-items:center;justify-content:center;gap:14px;position:relative}
+.app2-body .flag{font-size:46px;filter:drop-shadow(0 3px 2px #06405b)}
+.app2-body h1{margin:0;text-align:center;text-transform:uppercase;font-size:clamp(25px,3.5vw,43px);line-height:1.05;text-shadow:0 4px 0 #6a3512,0 7px 8px #00304a;letter-spacing:1px;color:#fff}
+.app2-body h1 span{display:block;color:#ffdf35;font-size:.75em;margin-top:7px}
+.app2-body .subtitle{text-align:center;margin:8px auto 16px;font-weight:800;color:#073b5b;background:#ffe8a6;border:3px solid #b7792e;border-radius:15px;padding:9px 18px;width:fit-content;max-width:92%;box-shadow:0 4px 0 #8e5b25}
+.app2-body .layout{max-width:1450px;margin:auto;padding:0 16px 20px;display:grid;grid-template-columns:220px minmax(400px,1fr) 255px;gap:14px;align-items:stretch}
+.app2-body .panel{background:linear-gradient(145deg,#0a3a58,#052a43);border:4px solid #0a567c;border-radius:19px;box-shadow:0 7px 0 #03466c, inset 0 0 0 2px #287ca0;padding:12px}
+.app2-body .card{background:#fff0c4;color:#4c2c13;border:4px solid #9c622c;border-radius:14px;padding:12px;box-shadow:inset 0 0 0 2px #e8b65b}
+.app2-body .label{color:#ffda37;font-weight:1000;text-transform:uppercase;text-align:center;font-size:18px;margin:2px 0 8px}
+.app2-body .stat{border-bottom:2px solid #28617d;padding:10px 0;text-align:center}.app2-body .stat:last-child{border:0}.app2-body .big{font-size:28px;font-weight:1000}
+.app2-body .level{display:inline-block;background:#8b4de0;color:white;border-radius:10px;padding:4px 13px;font-size:24px;box-shadow:0 4px #52269a}
+.app2-body .hearts{font-size:25px;letter-spacing:3px}.app2-body .how{font-size:13px;line-height:1.5}.app2-body .how b{color:#ffdb40}
+.app2-body .map-wrap{min-width:0;position:relative;background:linear-gradient(180deg,#068cc5,#00649b);border:5px solid #075681;border-radius:22px;padding:10px;box-shadow:0 9px 0 #03496c}
+.app2-body .map-top{display:flex;justify-content:space-between;align-items:center;padding:0 8px 9px;font-weight:900;color:white}
+.app2-body .badge{background:#064365;border:2px solid #32b9e7;border-radius:20px;padding:4px 10px;font-size:12px}
+.app2-body .grid-shell{display:grid;grid-template-columns:32px 1fr;grid-template-rows:27px 1fr;gap:0;max-width:100%;aspect-ratio:1/0.82;margin:auto}
+.app2-body .x-labels{grid-column:2;display:grid;grid-template-columns:repeat(9,1fr);align-items:center;text-align:center;font-weight:900;font-size:15px}
+.app2-body .y-labels{grid-row:2;display:grid;grid-template-rows:repeat(6,1fr);align-items:center;text-align:center;font-weight:900}
+.app2-body .ocean-grid{grid-row:2;grid-column:2;display:grid;grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(6,1fr);border:3px solid #9de7ff;border-radius:7px;overflow:hidden;background:linear-gradient(135deg,rgba(42,203,245,.7),rgba(0,129,203,.8));position:relative}
+.app2-body .cell{position:relative;min-width:0;min-height:0;border:1px solid rgba(222,249,255,.45);background:rgba(40,190,232,.22);color:white;font-size:clamp(16px,2.2vw,30px);display:flex;align-items:center;justify-content:center;transition:background .15s,transform .15s}
+.app2-body .cell:hover:not(:disabled){background:rgba(255,218,55,.35);box-shadow:inset 0 0 0 3px #ffdb38}
+.app2-body .cell:disabled{cursor:default}
+.app2-body .cell.obstacle{background:rgba(2,58,88,.35)}
+.app2-body .cell.path{background:rgba(255,207,31,.22)}
+.app2-body .cell.current{background:#ffe36b;box-shadow:inset 0 0 0 3px #a45e08}
+.app2-body .cell.current::after{content:"";position:absolute;inset:4px;border:2px dashed #9a4e0a;border-radius:50%}
+.app2-body .cell.goal{background:rgba(51,220,100,.35)}
+.app2-body .cell .coord{position:absolute;bottom:2px;right:3px;font-size:9px;opacity:.7;font-weight:800}
+.app2-body .ship-icon,.app2-body .obj-icon{filter:drop-shadow(0 2px 1px #00374d);z-index:1}
+.app2-body .route{font-size:10px;position:absolute;top:2px;left:3px;color:#ffed90;font-weight:1000}
+.app2-body .right .card{margin-bottom:12px}
+.app2-body .mission-coord{font-size:38px;text-align:center;color:#0786c7;font-weight:1000;margin:4px 0}
+.app2-body .mission-name{text-align:center;font-weight:900;font-size:15px}
+.app2-body .instruction{text-align:center;font-size:13px;line-height:1.4}
+.app2-body .controls{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;max-width:190px;margin:10px auto}
+.app2-body .arrow{background:linear-gradient(#ffdf42,#f4a400);color:#633500;border:2px solid #b16b00;border-radius:50%;height:47px;font-size:22px;font-weight:1000;box-shadow:0 3px #8e4b00}
+.app2-body .arrow:active{transform:translateY(2px);box-shadow:0 1px #8e4b00}
+.app2-body .arrow.up{grid-column:2}.app2-body .arrow.left{grid-column:1;grid-row:2}.app2-body .arrow.center{grid-column:2;grid-row:2;background:#925b22;color:#ffe4a0}.app2-body .arrow.righta{grid-column:3;grid-row:2}.app2-body .arrow.down{grid-column:2;grid-row:3}
+.app2-body .action{width:100%;border-radius:12px;padding:10px 8px;margin-top:7px;font-weight:1000;color:#fff;box-shadow:0 4px rgba(0,0,0,.25);border:2px solid rgba(255,255,255,.35)}
+.app2-body .red{background:linear-gradient(#ff6b50,#d52b1e)}.app2-body .green{background:linear-gradient(#47df7e,#11994d)}.app2-body .blue{background:linear-gradient(#34c8f5,#0878bd)}
+.app2-body .feedback{min-height:65px;background:#07334e;border:2px solid #28789c;border-radius:12px;padding:10px;margin-top:10px;font-size:13px;line-height:1.4;text-align:center}
+.app2-body .bottom{max-width:1450px;margin:0 auto;padding:0 16px 24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.app2-body .legend,.app2-body .progress{background:#073954;border:4px solid #0a567c;border-radius:17px;padding:12px}
+.app2-body .legend-items{display:flex;justify-content:space-around;gap:8px;flex-wrap:wrap;font-size:12px;text-align:center}.app2-body .legend-items span{display:block;font-size:24px}
+.app2-body .progress-track{display:flex;align-items:center;justify-content:space-between;gap:4px;margin:15px 4px 8px}.app2-body .dot{width:20px;height:20px;border-radius:50%;background:#9db3bf;border:3px solid white}.app2-body .dot.done{background:#ffce28;border-color:#fff2b0}
+.app2-body .modal{position:fixed;inset:0;background:rgba(0,25,44,.78);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}.app2-body .modal.show{display:flex}.app2-body .modal-box{max-width:460px;width:100%;background:#fff0c4;color:#4c2c13;border:6px solid #9c622c;border-radius:22px;padding:24px;text-align:center;box-shadow:0 12px 0 #603915}.app2-body .modal-box h2{font-size:28px;margin:5px}.app2-body .modal-box .trophy{font-size:65px}
+@media(max-width:1050px){.app2-body .layout{grid-template-columns:190px minmax(330px,1fr)}.app2-body .right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:12px}.app2-body .right .card{margin:0}.app2-body .right .controls-card{grid-column:span 1}}
+@media(max-width:700px){.app2-body .layout{grid-template-columns:1fr;padding:0 10px 16px}.app2-body .left{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.app2-body .left .how{grid-column:1/-1}.app2-body .map-wrap{grid-row:1}.app2-body .grid-shell{aspect-ratio:1/0.85}.app2-body .right{grid-column:auto;display:grid;grid-template-columns:1fr 1fr}.app2-body .bottom{grid-template-columns:1fr;padding:0 10px 20px}.app2-body .cell .coord{font-size:7px}.app2-body .subtitle{font-size:13px}.app2-body .panel{padding:9px}}
+</style>
+</head>
+<body>
+
+<nav class="game-selector-bar">
+  <span>🎮 PILIH PERMAINAN:</span>
+  <button class="mode-btn active" onclick="switchGameMode(1)">1. Misi Penyelamat Dunia</button>
+  <button class="mode-btn" onclick="switchGameMode(2)">2. Misi Lanun (Selamatkan Kapal!)</button>
+</nav>
+
+<!-- GAME 1 CONTAINER -->
+<div id="game1-container" class="game-container active-game">
+  <div class="app app1">
+    <nav class="topbar">
+      <div class="brand"><span>🧭</span>MISI KOORDINAT</div>
+      <div class="top-actions">
+        <button class="pill" id="musicToggle" aria-pressed="false">🎵 Muzik: OFF</button>
+        <button class="pill" onclick="showScreen('achievements')">🏆 Pencapaian</button>
+      </div>
+    </nav>
+
+    <section class="screen active" id="home">
+      <div class="panel hero">
+        <div>
+          <span class="eyebrow">🎒 PERMAINAN MATEMATIK • TAHUN 4–6</span>
+          <h1>Pengembaraan <em>Koordinat</em></h1>
+          <p class="lead">Sebuah peta ajaib telah hilang! Bantu Kapten Kiko mencari artifak, menyelamatkan rakan dan membuka rahsia tiga dunia — dengan kemahiran koordinat kamu.</p>
+          <div class="btn-row">
+            <button class="btn primary" onclick="showScreen('map')">⚓ MULA PENGEMBARAAN</button>
+            <button class="btn secondary" onclick="showScreen('howto')">📖 CARA BERMAIN</button>
+          </div>
+        </div>
+        <div class="art" aria-label="Pulau harta karun kartun">
+          <div class="cloud c1">☁️</div><div class="cloud c2">☁️</div>
+          <div class="island"><span class="palm p1">🌴</span><span class="palm p2">🌴</span><span class="palm p3">🌳</span><span class="treasure">🗺️</span></div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature">🧩 <b>Misi Interaktif</b><span>Pilih petak pada grid untuk mencari objek tersembunyi.</span></div>
+        <div class="feature">⭐ <b>Kumpul Ganjaran</b><span>Dapatkan mata, bintang dan lencana selepas cabaran.</span></div>
+        <div class="feature">🌍 <b>Teroka 3 Dunia</b><span>Hutan Misteri, Pulau Harta Karun dan Angkasa Lepas.</span></div>
+      </div>
+    </section>
+
+    <section class="screen" id="howto">
+      <div class="panel">
+        <div class="section-head"><div><span class="eyebrow">PANDUAN PENGEMBARA</span><h2>Cara Bermain</h2><p class="muted">Ingat: koordinat ditulis sebagai (huruf, nombor).</p></div><button class="btn secondary" onclick="showScreen('home')">← Kembali</button></div>
+        <div class="instructions">
+          <div class="step"><div class="num">1</div><h3>🗺️ Pilih dunia</h3><p class="muted">Buka peta dan pilih misi yang tersedia. Selesaikan misi untuk membuka dunia seterusnya.</p></div>
+          <div class="step"><div class="num">2</div><h3>🔎 Cari sasaran</h3><p class="muted">Baca koordinat sasaran. Huruf menunjukkan lajur dan nombor menunjukkan baris.</p></div>
+          <div class="step"><div class="num">3</div><h3>⭐ Kumpul mata</h3><p class="muted">Tekan petak yang betul. Jawapan tepat memberikan 10 mata dan membantu kamu melengkapkan misi.</p></div>
+        </div>
+        <div class="mission-box" style="margin-top:16px"><b>💡 Tip Matematik:</b> Cari huruf dahulu (A hingga F), kemudian cari nombor baris (1 hingga 6). Contoh: (C, 3) ialah lajur C, baris 3.</div>
+      </div>
+    </section>
+
+    <section class="screen" id="map">
+      <div class="panel">
+        <div class="section-head"><div><span class="eyebrow">PETA DUNIA</span><h2>Pilih Misi Kamu</h2><p class="muted">Setiap dunia membawa cabaran koordinat yang berbeza.</p></div><button class="btn secondary" onclick="showScreen('home')">⌂ Menu Utama</button></div>
+        <div class="worlds">
+          <article class="world-card forest" id="worldCard0"><span class="badge">DUNIA 1 • TERBUKA</span><div class="world-icon">🌳</div><h3>Hutan Misteri</h3><p>Cari haiwan yang tersesat di dalam hutan. Belajar mengenal pasti lokasi pada grid.</p><button onclick="startWorld(0)">Masuki Hutan →</button></article>
+          <article class="world-card treasure-world locked" id="worldCard1"><span class="badge" id="badge1">🔒 DIKUNCI</span><div class="world-icon">🏴‍☠️</div><h3>Pulau Harta Karun</h3><p>Elakkan batu dan temukan peti harta karun berdasarkan koordinat.</p><button id="worldBtn1" onclick="startWorld(1)">Selesaikan Dunia 1 dahulu</button></article>
+          <article class="world-card space locked" id="worldCard2"><span class="badge" id="badge2">🔒 DIKUNCI</span><div class="world-icon">🚀</div><h3>Angkasa Lepas</h3><p>Bantu angkasawan mencari kristal tenaga dalam misi koordinat terakhir.</p><button id="worldBtn2" onclick="startWorld(2)">Selesaikan Dunia 2 dahulu</button></article>
+        </div>
+        <div class="feature-row">
+          <div class="feature">⭐ <b>Skor terkumpul</b><span id="mapScore">0 mata</span></div>
+          <div class="feature">🧭 <b>Misi selesai</b><span id="mapMissions">0 daripada 3</span></div>
+          <div class="feature">🎖️ <b>Lencana</b><span id="mapBadges">Belum diperoleh</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="game">
+      <div class="panel">
+        <div class="section-head"><div><span class="eyebrow" id="worldEyebrow">DUNIA 1</span><h2 id="worldTitle">Hutan Misteri</h2><p class="muted" id="worldDescription">Cari sasaran pada grid koordinat.</p></div><button class="btn secondary" onclick="showScreen('map')">🗺️ Peta Dunia</button></div>
+        <div class="game-layout">
+          <div class="game-board">
+            <div class="col-labels"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span></div>
+            <div class="board-line"><div class="row-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div><div class="grid" id="grid" aria-label="Grid koordinat 6 kali 6"></div></div>
+            <p class="small">Pilih petak pada grid untuk menghantar watak ke lokasi itu.</p>
+          </div>
+          <div class="side-panel">
+            <div class="mission-box"><div class="mission-title">🎯 Misi semasa</div><div id="missionText">Cari haiwan!</div><div class="target-big" id="targetCoord">(C, 3)</div><div class="small" id="targetHint">Di manakah sasaran?</div><div class="progressline"><div id="progressFill"></div></div><p class="small" id="progressText">0 / 5 sasaran</p></div>
+            <div class="stats-grid" style="margin:0"><div class="stat-card"><span>⭐ Skor</span><strong id="gameScore">0</strong></div><div class="stat-card"><span>❤️ Nyawa</span><strong id="lives">3</strong></div><div class="stat-card"><span>🎯 Tepat</span><strong id="correctCount">0</strong></div></div>
+            <div class="feedback" id="feedback" aria-live="polite">Pilih petak yang sepadan dengan koordinat sasaran.</div>
+            <div class="controls"><button class="btn gold" onclick="repeatHint()">💡 Petunjuk</button><button class="btn secondary" onclick="resetWorld()">↻ Mula Semula</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="victory">
+      <div class="panel center">
+        <div style="font-size:76px;margin:12px">🏆</div><span class="eyebrow">MISI SELESAI</span>
+        <h2 id="victoryTitle">Syabas, Pengembara!</h2>
+        <p class="lead" style="margin:10px auto">Kamu telah menggunakan kemahiran koordinat untuk menyelesaikan cabaran ini.</p>
+        <div class="stats-grid"><div class="stat-card">⭐ Skor misi<strong id="missionScore">0</strong></div><div class="stat-card">🎯 Jawapan tepat<strong id="missionCorrect">0/5</strong></div><div class="stat-card">🏅 Lencana<strong id="missionBadge">1</strong></div></div>
+        <div class="badges"><div class="badge-trophy">🧭 Pencari Koordinat</div><div class="badge-trophy">✨ Pengembara Hebat</div></div>
+        <div class="btn-row" style="justify-content:center"><button class="btn primary" id="continueBtn" onclick="continueAfterWin()">Teruskan Pengembaraan →</button><button class="btn secondary" onclick="showScreen('map')">Kembali ke Peta</button></div>
+      </div>
+    </section>
+
+    <section class="screen" id="achievements">
+      <div class="panel">
+        <div class="section-head"><div><span class="eyebrow">KOLEKSI KAMU</span><h2>🏆 Pusat Pencapaian</h2><p class="muted">Kemajuan disimpan dalam pelayar ini.</p></div><button class="btn secondary" onclick="showScreen('map')">← Kembali</button></div>
+        <div class="stats-grid"><div class="stat-card">⭐ Jumlah skor<strong id="achScore">0</strong></div><div class="stat-card">🗺️ Dunia selesai<strong id="achWorlds">0/3</strong></div><div class="stat-card">🎯 Jawapan tepat<strong id="achCorrect">0</strong></div></div>
+        <h3>Lencana Pengembara</h3><div class="badges" id="badgeCollection"></div>
+        <div class="mission-box"><b>📚 Apa yang kamu pelajari?</b><p class="muted">Membaca koordinat pada grid, memadankan lajur dan baris, serta menggunakan koordinat untuk mencari lokasi.</p></div>
+        <div class="btn-row"><button class="btn gold" onclick="showScreen('map')">Pilih Misi</button><button class="btn secondary" onclick="resetProgress()">Padam kemajuan & mula semula</button></div>
+      </div>
+    </section>
+    <footer>Pengembaraan Koordinat • Sumber pembelajaran Matematik interaktif • Direka untuk murid sekolah rendah</footer>
+  </div>
+  <div class="toast" id="toast"></div>
+</div>
+
+<!-- GAME 2 CONTAINER -->
+<div id="game2-container" class="game-container">
+  <div class="app2-body">
+    <header class="top"><div class="flag">🏴‍☠️</div><h1>Misi Lanun <span>Selamatkan Kapal!</span></h1><div class="flag">⚓</div></header>
+    <div class="subtitle">🏝️ Capai pulau harta karun dengan koordinat yang betul!</div>
+    <main class="layout">
+      <aside class="panel left">
+        <div class="stat"><div class="label">Tahap</div><div class="level" id="level">1</div><div id="levelName" style="font-weight:900;margin-top:6px">Laut Tenang</div></div>
+        <div class="stat"><div class="label">Skor</div><div class="big">⭐ <span id="score">0</span></div></div>
+        <div class="stat"><div class="label">Nyawa Kapal</div><div class="hearts" id="hearts">❤️❤️❤️</div></div>
+        <div class="stat"><div class="label">Misi</div><div class="big"><span id="missionNo">1</span> / 10</div></div>
+        <div class="stat how"><div class="label">Cara Bermain</div>
+          <p>• Baca koordinat tujuan.</p><p>• Gerakkan kapal menggunakan <b>butang arah</b> atau petak bersebelahan.</p><p>• Elakkan batu karang, pusaran air dan kapal musuh.</p><p>• Sampai ke pulau harta karun untuk menang!</p>
+        </div>
+        <button class="action blue" id="soundBtn">🔊 Bunyi: ON</button>
+      </aside>
+      <section class="map-wrap">
+        <div class="map-top"><span>🗺️ PETA LAUTAN</span><span class="badge">X dahulu, kemudian Y</span></div>
+        <div class="grid-shell">
+          <div class="x-labels" id="xLabels"></div><div class="y-labels" id="yLabels"></div><div class="ocean-grid" id="grid2" aria-label="Peta koordinat"></div>
+        </div>
+        <div class="feedback" id="feedback2" aria-live="polite">Ahoy, kapten! Baca koordinat sasaran, kemudian gerakkan kapal satu petak pada satu masa.</div>
+      </section>
+      <aside class="right">
+        <div class="card">
+          <div class="label" style="color:#7a451c">⚓ Misi Semasa</div>
+          <div class="mission-name" id="missionName">Cari Pulau Harta Karun</div>
+          <div style="text-align:center;margin-top:8px">Gerakkan kapal ke:</div>
+          <div class="mission-coord" id="targetCoord2">(5, 3)</div>
+          <div class="instruction" id="targetHint2">Ingat: koordinat ditulis (x, y).</div>
+        </div>
+        <div class="panel controls-card">
+          <div class="label">Kawalan Kapal</div><div class="instruction">Tekan arah untuk bergerak satu petak.</div>
+          <div class="controls">
+            <button class="arrow up" data-move="0,1" aria-label="Atas">▲</button>
+            <button class="arrow left" data-move="-1,0" aria-label="Kiri">◀</button>
+            <button class="arrow center" disabled>⚓</button>
+            <button class="arrow righta" data-move="1,0" aria-label="Kanan">▶</button>
+            <button class="arrow down" data-move="0,-1" aria-label="Bawah">▼</button>
+          </div>
+          <button class="action red" id="resetRoute">✖ Mula Semula Laluan</button>
+          <button class="action green" id="submit">✓ Hantar Laluan</button>
+          <button class="action blue" id="help">💡 Petunjuk</button>
+        </div>
+      </aside>
+    </main>
+    <footer class="bottom">
+      <section class="legend"><div class="label">Petunjuk Peta</div><div class="legend-items">
+        <div><span>🌊</span>Laut selamat</div><div><span>🪨</span>Batu karang</div><div><span>🌀</span>Pusaran air</div><div><span>🏴‍☠️</span>Kapal musuh</div><div><span>🏝️</span>Pulau harta</div>
+      </div></section>
+      <section class="progress"><div class="label">Progres Misi</div><div class="progress-track" id="progressTrack"></div><div style="text-align:center;font-size:12px">Selesaikan misi untuk membuka tahap seterusnya!</div></section>
+    </footer>
+    <div class="modal" id="modal"><div class="modal-box"><div class="trophy" id="modalIcon">🏆</div><h2 id="modalTitle">Syabas, Kapten!</h2><p id="modalText">Kapal berjaya sampai ke destinasi.</p><button class="action green" id="modalBtn">Misi Seterusnya ➜</button></div></div>
+  </div>
+</div>
+
+<script>
+function switchGameMode(mode) {
+  document.querySelectorAll('.mode-btn').forEach((btn, idx) => {
+    btn.classList.toggle('active', idx === mode - 1);
+  });
+  document.getElementById('game1-container').classList.toggle('active-game', mode === 1);
+  document.getElementById('game2-container').classList.toggle('active-game', mode === 2);
+}
+
+/* GAME 1 JS */
+const letters=['A','B','C','D','E','F'];
+const worlds=[
+ {name:'Hutan Misteri',icon:'🌳',desc:'Cari haiwan yang tersesat di dalam hutan.',target:'haiwan',items:['🦊','🐸','🦋','🐰','🦉'],obstacle:'🌿',hint:'Petunjuk: cari huruf lajur dahulu, kemudian nombor baris.'},
+ {name:'Pulau Harta Karun',icon:'🏴‍☠️',desc:'Elakkan batu dan cari peti harta karun.',target:'peti harta karun',items:['💎','🪙','🗝️','🏆','💰'],obstacle:'🪨',hint:'Petunjuk: koordinat menunjukkan satu petak tepat pada peta.'},
+ {name:'Angkasa Lepas',icon:'🚀',desc:'Cari kristal tenaga untuk menyelamatkan angkasawan.',target:'kristal tenaga',items:['💠','👾','🛰️','🌟','🪐'],obstacle:'☄️',hint:'Petunjuk: baca koordinat dalam susunan (lajur, baris).'}
+];
+let state={score:0,correctTotal:0,unlocked:1,completed:[],badges:[],activeWorld:0,round:0,correct:0,lives:3,target:null,obstacles:[],player:{x:0,y:5},used:[],music:false};
+try{const saved=JSON.parse(localStorage.getItem('misiKoordinatSave')||'null');if(saved)state={...state,...saved,activeWorld:0,round:0,correct:0,lives:3,target:null,obstacles:[],player:{x:0,y:5},used:[]}}catch(e){}
+let audioContext=null,musicTimer=null,musicStep=0;
+function sound(freq=600,duration=.12,type='sine',volume=.045){
+ try{audioContext ||= new(window.AudioContext||window.webkitAudioContext)();if(audioContext.state==='suspended')audioContext.resume();let o=audioContext.createOscillator(),g=audioContext.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audioContext.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+duration);o.connect(g);g.connect(audioContext.destination);o.start();o.stop(audioContext.currentTime+duration)}catch(e){}
+}
+function toggleMusic(){state.music=!state.music;const b=document.getElementById('musicToggle');b.textContent=state.music?'🎵 Muzik: ON':'🎵 Muzik: OFF';b.setAttribute('aria-pressed',String(state.music));if(state.music){const melody=[523,659,784,659,587,698,880,698];function tick(){if(!state.music)return;sound(melody[musicStep++%melody.length],.22,'triangle',.018)}tick();musicTimer=setInterval(tick,340)}else{clearInterval(musicTimer)}}
+document.getElementById('musicToggle').addEventListener('click',toggleMusic);
+function save(){try{localStorage.setItem('misiKoordinatSave',JSON.stringify({score:state.score,correctTotal:state.correctTotal,unlocked:state.unlocked,completed:state.completed,badges:state.badges}))}catch(e){}}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='map')updateMap();if(id==='achievements')updateAchievements();window.scrollTo({top:0,behavior:'smooth'})}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.style.display='none',2300)}
+function randCell(){return{x:Math.floor(Math.random()*6),y:Math.floor(Math.random()*6)}}
+function same(a,b){return a.x===b.x&&a.y===b.y}
+function coord(p){return `(${letters[p.x]}, ${p.y+1})`}
+function startWorld(i){if(i>=state.unlocked){toast('Selesaikan dunia sebelumnya dahulu!');return}state.activeWorld=i;state.round=0;state.correct=0;state.lives=3;state.used=[];state.player={x:0,y:5};document.getElementById('worldTitle').textContent=worlds[i].name;document.getElementById('worldEyebrow').textContent=`DUNIA ${i+1} • MISI ${i+1}`;document.getElementById('worldDescription').textContent=worlds[i].desc;newTarget();showScreen('game')}
+function newTarget(){state.target=randCell();while(same(state.target,state.player))state.target=randCell();state.obstacles=[];while(state.obstacles.length<5){let p=randCell();if(!same(p,state.target)&&!same(p,state.player)&&!state.obstacles.some(o=>same(o,p)))state.obstacles.push(p)}document.getElementById('missionText').textContent=['Selamatkan haiwan yang hilang!','Cari peti dan permata!','Kumpulkan kristal tenaga!'][state.activeWorld];document.getElementById('targetCoord').textContent=coord(state.target);document.getElementById('targetHint').textContent='Cari sasaran pada grid.';document.getElementById('feedback').textContent='Pilih petak yang sepadan dengan koordinat sasaran.';document.getElementById('progressFill').style.width=(state.round/5*100)+'%';document.getElementById('progressText').textContent=`${state.round} / 5 sasaran`;renderGrid();updateGameStats()}
+function renderGrid(){const grid=document.getElementById('grid');grid.replaceChildren();for(let y=0;y<6;y++){for(let x=0;x<6;x++){let p={x,y},b=document.createElement('button');b.className='cell pickable';b.setAttribute('aria-label',coord(p));if(same(p,state.target)){b.classList.add('target');b.textContent=worlds[state.activeWorld].items[state.round%5]}else if(state.obstacles.some(o=>same(o,p))){b.classList.add('obstacle');b.textContent=worlds[state.activeWorld].obstacle}else if(same(p,state.player)){b.classList.add('player');b.textContent='🧭'}else if(state.used.some(o=>same(o,p))){b.classList.add('visited');b.textContent='·'}b.addEventListener('click',()=>pickCell(p));grid.appendChild(b)}}}
+function pickCell(p){if(!state.target)return;if(same(p,state.target)){state.correct++;state.correctTotal++;state.score+=10;state.round++;state.player={...p};document.getElementById('feedback').textContent='🎉 Tepat! Kamu menemui sasaran dan memperoleh 10 mata!';document.getElementById('feedback').style.background='#d9ffea';sound(660,.12);setTimeout(()=>sound(880,.2),100);save();updateGameStats();renderGrid();document.getElementById('progressFill').style.width=(state.round/5*100)+'%';document.getElementById('progressText').textContent=`${state.round} / 5 sasaran`;if(state.round>=5){setTimeout(finishWorld,500)}else{state.used.push({...p});setTimeout(newTarget,650)}}else{state.lives--;state.used.push({...p});document.getElementById('feedback').textContent=state.obstacles.some(o=>same(o,p))?'💥 Alamak! Ada halangan di situ. Cuba koordinat sasaran.':'Belum tepat! Semak huruf dan nombor sekali lagi.';document.getElementById('feedback').style.background='#ffe5e0';sound(210,.22,'sawtooth',.035);updateGameStats();renderGrid();if(state.lives<=0){document.getElementById('feedback').textContent='Nyawa habis! Tak mengapa — cuba semula dan baca koordinat dengan teliti.';setTimeout(()=>{state.lives=3;state.used=[];state.player={x:0,y:5};newTarget()},1300)}}}
+function repeatHint(){document.getElementById('targetHint').textContent=worlds[state.activeWorld].hint;toast('Ingat: huruf dahulu, nombor kemudian.');sound(500,.1)}
+function updateGameStats(){document.getElementById('gameScore').textContent=state.score;document.getElementById('lives').textContent='❤️'.repeat(Math.max(0,state.lives));document.getElementById('correctCount').textContent=state.correct}
+function resetWorld(){if(confirm('Mula semula misi ini? Skor yang telah dikumpul akan dikekalkan.')){state.round=0;state.correct=0;state.lives=3;state.used=[];state.player={x:0,y:5};newTarget()}}
+function finishWorld(){let i=state.activeWorld;if(!state.completed.includes(i))state.completed.push(i);state.unlocked=Math.max(state.unlocked,Math.min(3,i+2));const badge=['Penjaga Hutan','Pemburu Harta','Wira Angkasa'][i];if(!state.badges.includes(badge))state.badges.push(badge);save();document.getElementById('victoryTitle').textContent=`Syabas, ${worlds[i].name} selesai!`;document.getElementById('missionScore').textContent=state.correct*10;document.getElementById('missionCorrect').textContent=`${state.correct}/5`;document.getElementById('missionBadge').textContent='🏅';document.getElementById('continueBtn').textContent=i<2?'Teruskan ke Dunia Seterusnya →':'Raikan Kemenangan! 🎉';showScreen('victory');sound(523,.18);setTimeout(()=>sound(659,.18),140);setTimeout(()=>sound(784,.28),280)}
+function continueAfterWin(){if(state.activeWorld<2&&state.unlocked>state.activeWorld+1)startWorld(state.activeWorld+1);else showScreen('map')}
+function updateMap(){document.getElementById('mapScore').textContent=state.score+' mata';document.getElementById('mapMissions').textContent=state.completed.length+' daripada 3';document.getElementById('mapBadges').textContent=state.badges.length?state.badges.length+' diperoleh':'Belum diperoleh';for(let i=0;i<3;i++){let card=document.getElementById('worldCard'+i),badge=document.getElementById('badge'+i),btn=document.getElementById('worldBtn'+i);if(i===0){card.classList.remove('locked');continue}if(i<state.unlocked){card.classList.remove('locked');badge.textContent=state.completed.includes(i)?'✅ SELESAI':'🌟 TERBUKA';btn.textContent=state.completed.includes(i)?'Main Semula ↻':'Mulakan Misi →'}else{card.classList.add('locked');badge.textContent='🔒 DIKUNCI';btn.textContent=`Selesaikan Dunia ${i} dahulu`}}}
+function updateAchievements(){document.getElementById('achScore').textContent=state.score;document.getElementById('achWorlds').textContent=state.completed.length+'/3';document.getElementById('achCorrect').textContent=state.correctTotal;const box=document.getElementById('badgeCollection');box.replaceChildren();const all=['Penjaga Hutan','Pemburu Harta','Wira Angkasa'];all.forEach((b,i)=>{let d=document.createElement('div');d.className='badge-trophy';d.textContent=(state.badges.includes(b)?'🏅 ':'🔒 ')+b;box.appendChild(d)})}
+function resetProgress(){if(confirm('Padam semua skor, lencana dan kemajuan?')){state.score=0;state.correctTotal=0;state.unlocked=1;state.completed=[];state.badges=[];save();updateAchievements();updateMap();toast('Kemajuan telah dipadam.');}}
+updateMap();updateAchievements();
+
+/* GAME 2 JS */
+const missions2=[
+ {name:"Cari Pulau Harta Karun",target:[5,3],start:[0,0],obstacles:[[4,2,"🪨"],[4,4,"🪨"],[2,3,"🌀"],[7,1,"🌀"],[6,4,"🏴‍☠️"]],hint:"Dari titik mula, bergerak ke kanan dan ke atas. Rancang laluan yang tidak menyentuh halangan."},
+ {name:"Hantar Bekalan",target:[8,5],start:[0,1],obstacles:[[3,1,"🪨"],[3,2,"🪨"],[5,3,"🌀"],[6,2,"🏴‍☠️"],[7,4,"🪨"]],hint:"Destinasi berada di bahagian kanan atas peta. Elakkan halangan di tengah."},
+ {name:"Selamatkan Anak Kapal",target:[1,5],start:[8,0],obstacles:[[6,1,"🪨"],[6,2,"🪨"],[4,3,"🌀"],[2,4,"🏴‍☠️"],[3,5,"🪨"]],hint:"Kamu bermula di kanan bawah. Bergerak ke kiri dan cari laluan ke bahagian atas."},
+ {name:"Cari Kompas Hilang",target:[7,2],start:[1,5],obstacles:[[2,4,"🪨"],[4,4,"🌀"],[5,2,"🏴‍☠️"],[6,3,"🪨"]],hint:"Kompas berada pada koordinat dengan nilai x yang besar dan nilai y yang rendah."},
+ {name:"Lepasi Selat Sempit",target:[0,4],start:[8,4],obstacles:[[6,4,"🪨"],[5,3,"🪨"],[4,2,"🌀"],[2,3,"🏴‍☠️"]],hint:"Kamu perlu bergerak jauh ke kiri pada baris y yang sesuai, sambil mengelakkan halangan."},
+ {name:"Ambil Peta Rahsia",target:[4,5],start:[0,0],obstacles:[[1,1,"🪨"],[2,2,"🌀"],[3,3,"🏴‍☠️"],[5,4,"🪨"]],hint:"Peta rahsia berada di baris paling atas. Nilai y ialah 5."},
+ {name:"Lindungi Kapal Dagang",target:[8,2],start:[0,5],obstacles:[[2,4,"🪨"],[3,2,"🌀"],[5,3,"🏴‍☠️"],[7,3,"🪨"]],hint:"Sasaran di hujung kanan dengan nilai y di tengah bawah."},
+ {name:"Cari Mutiara Diraja",target:[2,1],start:[8,5],obstacles:[[7,4,"🪨"],[6,3,"🌀"],[4,2,"🏴‍☠️"],[3,1,"🪨"]],hint:"Mutiara berada dekat bahagian kiri bawah. Cari jalan mengelilingi batu karang."},
+ {name:"Lepasi Pusaran",target:[6,5],start:[0,2],obstacles:[[2,2,"🪨"],[3,3,"🌀"],[4,4,"🪨"],[5,4,"🏴‍☠️"]],hint:"Sasaran berada di penjuru kanan atas. Jangan lintas petak yang mempunyai halangan."},
+ {name:"Harta Karun Terakhir",target:[4,2],start:[8,0],obstacles:[[7,1,"🪨"],[6,2,"🌀"],[5,3,"🏴‍☠️"],[3,1,"🪨"]],hint:"Misi terakhir! Sasaran berada hampir di tengah peta. Pilih laluan paling selamat."}
+];
+let mi2=0,score2=0,lives2=3,pos2=[0,0],path2=[],finished2=false,sound2=true;
+const $2=id=>document.getElementById(id);
+function setupMission2(){
+ const m=missions2[mi2];pos2=[...m.start];path2=[[...pos2]];finished2=false;
+ $2("level").textContent=mi2<3?1:mi2<6?2:3;
+ $2("levelName").textContent=mi2<3?"Laut Tenang":mi2<6?"Selat Berbahaya":"Lautan Bergelora";
+ $2("missionNo").textContent=mi2+1;$2("missionName").textContent=m.name;$2("targetCoord2").textContent=`(${m.target[0]}, ${m.target[1]})`;
+ $2("targetHint2").textContent="Ingat: koordinat ditulis (x, y).";
+ $2("feedback2").textContent="Pilih arah atau petak bersebelahan untuk menggerakkan kapal.";
+ $2("resetRoute").disabled=false;$2("submit").disabled=false;
+ render2();updateStats2();
+}
+function obstacleAt2(x,y){return missions2[mi2].obstacles.find(o=>o[0]===x&&o[1]===y)}
+function render2(){
+ $2("xLabels").innerHTML=Array.from({length:9},(_,x)=>`<span>${x}</span>`).join("");
+ $2("yLabels").innerHTML=Array.from({length:6},(_,i)=>`<span>${5-i}</span>`).join("");
+ const grid=$2("grid2");grid.innerHTML="";
+ for(let y=5;y>=0;y--)for(let x=0;x<=8;x++){
+  const b=obstacleAt2(x,y),isGoal=missions2[mi2].target[0]===x&&missions2[mi2].target[1]===y,isHere=pos2[0]===x&&pos2[1]===y;
+  const cell=document.createElement("button");cell.className="cell"+(b?" obstacle":"")+(isGoal?" goal":"")+(isHere?" current":"")+(path2.some(p=>p[0]===x&&p[1]===y)?" path":"");
+  cell.setAttribute("aria-label",`Koordinat ${x}, ${y}`);
+  let icon=b?b[2]:(isGoal?"🏝️":(isHere?"🚢":""));
+  cell.innerHTML=(path2.some((p,i)=>i>0&&p[0]===x&&p[1]===y)?'<span class="route">•</span>':'')+(icon?`<span class="${isHere?'ship-icon':'obj-icon'}">${icon}</span>`:'')+`<span class="coord">${x},${y}</span>`;
+  cell.disabled=finished2||!!b||isHere;
+  cell.addEventListener("click",()=>{if(Math.abs(x-pos2[0])+Math.abs(y-pos2[1])===1)moveTo2(x,y);else $2("feedback2").textContent="Kapal bergerak satu petak sahaja setiap kali. Pilih petak yang bersebelahan!";});
+  grid.appendChild(cell);
+ }
+ $2("progressTrack").innerHTML=missions2.map((_,i)=>`<div class="dot ${i<mi2?'done':''}" title="Misi ${i+1}">${i<mi2?'★':''}</div>`).join("");
+}
+function updateStats2(){$2("score").textContent=score2;$2("hearts").textContent="❤️".repeat(lives2)+"🖤".repeat(3-lives2)}
+function moveTo2(x,y){
+ if(finished2)return;
+ pos2=[x,y];path2.push([x,y]);const m=missions2[mi2];
+ if(x===m.target[0]&&y===m.target[1]){score2+=10;finished2=true;$2("feedback2").textContent="Hebat! Kamu sampai ke destinasi dan memperoleh 10 mata!";$2("submit").disabled=true;$2("resetRoute").disabled=true;showModal2(true);}
+ else $2("feedback2").textContent=`Kapal bergerak ke (${x}, ${y}). Bagus, kapten! Teruskan perjalanan ke (${m.target[0]}, ${m.target[1]}).`;
+ updateStats2();render2();
+}
+function move2(dx,dy){let x=pos2[0]+dx,y=pos2[1]+dy;if(x<0||x>8||y<0||y>5){$2("feedback2").textContent="Awas! Kapal tidak boleh keluar daripada peta.";return}const b=obstacleAt2(x,y);if(b){lives2--;updateStats2();$2("feedback2").textContent=`Alamak! ${b[2]} Halangan di (${x}, ${y}). Kamu kehilangan satu nyawa. Cuba laluan lain.`;if(lives2<=0){finished2=true;showModal2(false)}return}moveTo2(x,y)}
+document.querySelectorAll("[data-move]").forEach(btn=>btn.addEventListener("click",()=>{const [dx,dy]=btn.dataset.move.split(",").map(Number);move2(dx,dy)}));
+$2("resetRoute").addEventListener("click",()=>{pos2=[...missions2[mi2].start];path2=[[...pos2]];render2();$2("feedback2").textContent="Laluan dimulakan semula. Cuba laluan yang berbeza!";});
+$2("submit").addEventListener("click",()=>{const m=missions2[mi2];if(pos2[0]===m.target[0]&&pos2[1]===m.target[1]){score2+=10;finished2=true;updateStats2();showModal2(true)}else $2("feedback2").textContent=`Belum sampai! Kapal sekarang di (${pos2[0]}, ${pos2[1]}). Sasaran ialah (${m.target[0]}, ${m.target[1]}). Teruskan bergerak.`});
+$2("help").addEventListener("click", me=>{$2("targetHint2").textContent=missions2[mi2].hint;$2("feedback2").textContent="Petunjuk kapten: "+missions2[mi2].hint;});
+$2("soundBtn").addEventListener("click",()=>{sound2=!sound2;$2("soundBtn").textContent=sound2?"🔊 Bunyi: ON":"🔇 Bunyi: OFF";});
+function showModal2(won){$2("modal").classList.add("show");$2("modalIcon").textContent=won?"🏆":"💥";$2("modalTitle").textContent=won?"Syabas, Kapten!":"Kapal Kehabisan Nyawa!";$2("modalText").textContent=won?`Misi ${mi2+1} selesai! Kamu memperoleh 10 mata. Jumlah skor: ${score2}.`:"Kapal terkena terlalu banyak halangan. Cuba semula misi ini dengan laluan yang lebih selamat.";$2("modalBtn").textContent=won?(mi2===missions2.length-1?"Tamatkan Ekspedisi!":"Misi Seterusnya ➜"):"Cuba Lagi ↻";}
+$2("modalBtn").addEventListener("click", me=>{$2("modal").classList.remove("show");if(lives2<=0){lives2=3;setupMission2();return}if(mi2===missions2.length-1&&finished2){$2("modal").classList.add("show");$2("modalIcon").textContent="🏆";$2("modalTitle").textContent="Raja Lanun Koordinat!";$2("modalText").textContent=`Tahniah! Kamu menamatkan semua 10 misi dengan skor ${score2}.`; $2("modalBtn").textContent="Main Semula";$2("modalBtn").onclick=()=>location.reload();return}mi2++;if(mi2>=missions2.length)mi2=0;setupMission2();});
+setupMission2();
+</script>
+</body>
+</html>
