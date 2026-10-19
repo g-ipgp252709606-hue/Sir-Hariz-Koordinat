@@ -82,4 +82,21 @@ button:hover{transform:translateY(-2px);filter:brightness(1.04)}
 .g1-btn.gold{background:var(--gold);color:#68410c}
 .g1-art{min-height:340px;display:grid;place-items:center;position:relative}
 .g1-island{width:min(100%,400px);aspect-ratio:1;border-radius:48% 52% 45% 55%;background:linear-gradient(150deg,#b5f3c6 0 28%,#55cba5 29% 53%,#219e9c 54%);border:9px solid #fff;box-shadow:0 15px 0 #2b897b30;position:relative;transform:rotate(-5deg)}
-.g1-island:before{content:"";position:absolute;inset:14% 13% 18% 19%;background
+.g1-island:before{content:"";position:absolute;inset:14% 13% 18% 19%;background:#f7d891;border-radius:50%;transform:rotate(25deg)}
+.g1-palm{position:absolute;font-size:clamp(36px,7vw,65px);filter:drop-shadow(0 4px 0 #244d4530)}
+.g1-palm.p1{top:10%;left:13%}.g1-palm.p2{right:9%;top:28%}.g1-palm.p3{left:30%;bottom:7%}
+.g1-treasure{position:absolute;top:42%;left:41%;font-size:clamp(60px,9vw,90px);transform:rotate(5deg);filter:drop-shadow(0 8px 0 #6a4b2625);animation:g1-bob 2s ease-in-out infinite}
+@keyframes g1-bob{50%{transform:translateY(-9px) rotate(5deg)}}
+.g1-cloud{position:absolute;font-size:44px;opacity:.85}.g1-cloud.c1{top:5%;right:2%}.g1-cloud.c2{left:0;bottom:10%}
+.g1-feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.g1-feature{padding:17px;border-radius:18px;background:#ffffffb8;border:1px solid #fff}
+.g1-feature b{display:block;margin:6px 0}.g1-feature span{font-size:13px;color:#60728a;line-height:1.4}
+.g1-section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin-bottom:20px}
+.g1-muted{color:#61738b;line-height:1.55}
+.g1-worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.g1-world-card{border-radius:22px;padding:20px;border:2px solid #fff;min-height:225px;display:flex;flex-direction:column;align-items:flex-start;box-shadow:0 9px 20px #263d5810}
+.g1-world-card.forest{background:linear-gradient(145deg,#d7f8c9,#8de0a6)}
+.g1-world-card.treasure-world{background:linear-gradient(145deg,#fff0bd,#ffc879)}
+.g1-world-card.space{background:linear-gradient(145deg,#dcd8ff,#9da9ff)}
+.g1-world-icon{font-size:48px;margin-bottom:10px}
+.g1-world-card p{color:#53667c;font-
