@@ -3,97 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pengembaraan Koordinat & Misi Lanun</title>
+<title>Aplikasi Permainan Koordinat Matematik</title>
 <style>
-:root{
- --navy:#102746;--ink:#20334f;--cream:#fff9e9;--gold:#ffd166;--coral:#ff786b;
- --teal:#42d6c4;--purple:#8b72f8;--sky:#9be7ff;--green:#42c987;
-}
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);
- background:radial-gradient(circle at 10% 10%,#d8fbff 0,transparent 30%),linear-gradient(135deg,#f9edce,#d5f5e9 55%,#d9d4ff);min-height:100vh}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
 button{font:inherit;cursor:pointer;border:0;transition:transform .15s,filter .15s}
 button:hover{transform:translateY(-2px);filter:brightness(1.04)}
-button:focus-visible{outline:3px solid #162b49;outline-offset:3px}
 
-/* BAR PILIHAN PERMAINAN */
-.game-selector-bar {
-  background: #0f2b48;
-  padding: 12px 16px;
+/* BAR PERTUKARAN PERMAINAN (STICKY ATAS) */
+.top-game-switcher {
+  background: #09203f;
+  padding: 10px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 99999;
+  border-bottom: 2px solid #1e456e;
 }
-.game-selector-bar span {
+.top-game-switcher span {
   color: #fff;
   font-weight: 800;
   font-size: 14px;
 }
-.mode-btn {
-  background: #1e456e;
-  color: #e2f1ff;
-  border: 2px solid #3c6e9c;
-  padding: 8px 18px;
+.switcher-btn {
+  background: #173b60;
+  color: #d1e8ff;
+  border: 2px solid #366493;
+  padding: 8px 16px;
   border-radius: 20px;
   font-weight: 800;
   font-size: 13px;
   cursor: pointer;
 }
-.mode-btn.active {
-  background: var(--gold);
-  color: #573600;
+.switcher-btn.active {
+  background: #ffd166;
+  color: #4a3000;
   border-color: #ffffff;
   box-shadow: 0 0 10px rgba(255, 209, 102, 0.6);
 }
 
-.game-container {
-  display: none;
-}
-.game-container.active-game {
-  display: block;
-}
+.game-wrapper { display: none; }
+.game-wrapper.active { display: block; }
 
-/* GAME 1 STYLES */
-.app1{max-width:1120px;margin:auto;padding:18px}
-.app1 .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
-.app1 .brand{font-weight:950;letter-spacing:.4px;font-size:clamp(16px,3vw,22px);color:#17385a}
-.app1 .brand span{display:inline-grid;place-items:center;background:var(--gold);border-radius:12px;padding:7px;margin-right:7px}
-.app1 .top-actions{display:flex;gap:8px;flex-wrap:wrap}
-.app1 .pill{border:2px solid #ffffffaa;background:#ffffffb8;border-radius:999px;padding:9px 13px;font-weight:800;color:#28405f}
-.app1 .screen{display:none;animation:enter .25s ease}
-.app1 .screen.active{display:block}
-@keyframes enter{from{opacity:.2;transform:translateY(7px)}to{opacity:1;transform:none}}
-.app1 .panel{background:#ffffffd9;border:2px solid #fff;border-radius:25px;padding:clamp(18px,3vw,30px);box-shadow:0 16px 35px #344d7020}
-.app1 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;min-height:490px;overflow:hidden;position:relative}
-.app1 .eyebrow{display:inline-block;background:#dcfff4;color:#16755e;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.7px}
-.app1 h1{font-size:clamp(36px,6vw,67px);line-height:.98;letter-spacing:-2px;margin:17px 0 14px;color:#153b62}
-.app1 h1 em{font-style:normal;color:#f06d56}
-.app1 h2{margin:0 0 10px;font-size:clamp(25px,4vw,36px);color:#183b60}
-.app1 h3{margin:0 0 8px}
-.app1 .lead{font-size:17px;line-height:1.65;color:#526780;max-width:560px}
-.app1 .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}
-.app1 .btn{border-radius:14px;padding:13px 18px;font-weight:900;box-shadow:0 5px 0 #172d4720}
-.app1 .btn.primary{background:var(--coral);color:white}
-.app1 .btn.secondary{background:#e7e1ff;color:#4d3aa5}
-.app1 .btn.green{background:var(--green);color:#083f30}
-.app1 .btn.gold{background:var(--gold);color:#68410c}
-.app1 .btn.dark{background:#193b5f;color:white}
-.app1 .art{min-height:340px;display:grid;place-items:center;position:relative}
-.app1 .island{width:min(100%,400px);aspect-ratio:1;border-radius:48% 52% 45% 55%;background:linear-gradient(150deg,#b5f3c6 0 28%,#55cba5 29% 53%,#219e9c 54%);border:9px solid #fff;box-shadow:0 15px 0 #2b897b30;position:relative;transform:rotate(-5deg)}
-.app1 .island:before{content:"";position:absolute;inset:14% 13% 18% 19%;background:#f7d891;border-radius:50%;transform:rotate(25deg)}
-.app1 .palm{position:absolute;font-size:clamp(36px,7vw,65px);filter:drop-shadow(0 4px 0 #244d4530)}
-.app1 .palm.p1{top:10%;left:13%}.app1 .palm.p2{right:9%;top:28%}.app1 .palm.p3{left:30%;bottom:7%}
-.app1 .treasure{position:absolute;top:42%;left:41%;font-size:clamp(60px,9vw,90px);transform:rotate(5deg);filter:drop-shadow(0 8px 0 #6a4b2625);animation:bob 2s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-9px) rotate(5deg)}}
-.app1 .cloud{position:absolute;font-size:44px;opacity:.85}.app1 .cloud.c1{top:5%;right:2%}.app1 .cloud.c2{left:0;bottom:10%}
-.app1 .feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-.app1 .feature{padding:17px;border-radius:18px;background:#ffffffb8;border:1px solid #fff}
-.app1 .feature b{display:block;margin:6px 0}.app1 .feature span{font-size:13px;color:#60728a;line-height:1.4}
-.app1 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin-bottom:20px}
-.app1 .muted{color:#61738b;line-height:1.55}
-.app1 .worlds{display:grid;grid-template-
+/* =========================================================
+   STYLE PERMAINAN 1 (MISI PENYELAMAT DUNIA)
+   ========================================================= */
+#game1-root {
+  --navy:#102746;--ink:#20334f;--cream:#fff9e9;--gold:#ffd166;--coral:#ff786b;
+  --teal:#42d6c4;--purple:#8b72f8;--sky:#9be7ff;--green:#42c987;
+  color:var(--ink);
+  background:radial-gradient(circle at 10% 10%,#d8fbff 0,transparent 30%),linear-gradient(135deg,#f9edce,#d5f5e9 55%,#d9d4ff);
+  min-height: calc(100vh - 54px);
+  padding-bottom: 20px;
+}
+.g1-app{max-width:1120px;margin:auto;padding:18px}
+.g1-topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
+.g1-brand{font-weight:950;letter-spacing:.4px;font-size:clamp(16px,3vw,22px);color:#17385a}
+.g1-brand span{display:inline-grid;place-items:center;background:var(--gold);border-radius:12px;padding:7px;margin-right:7px}
+.g1-top-actions{display:flex;gap:8px;flex-wrap:wrap}
+.g1-pill{border:2px solid #ffffffaa;background:#ffffffb8;border-radius:999px;padding:9px 13px;font-weight:800;color:#28405f}
+.g1-screen{display:none;animation:g1-enter .25s ease}
+.g1-screen.active{display:block}
+@keyframes g1-enter{from{opacity:.2;transform:translateY(7px)}to{opacity:1;transform:none}}
+.g1-panel{background:#ffffffd9;border:2px solid #fff;border-radius:25px;padding:clamp(18px,3vw,30px);box-shadow:0 16px 35px #344d7020}
+.g1-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;min-height:490px;overflow:hidden;position:relative}
+.g1-eyebrow{display:inline-block;background:#dcfff4;color:#16755e;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.7px}
+.g1-hero h1{font-size:clamp(36px,6vw,67px);line-height:.98;letter-spacing:-2px;margin:17px 0 14px;color:#153b62}
+.g1-hero h1 em{font-style:normal;color:#f06d56}
+.g1-panel h2{margin:0 0 10px;font-size:clamp(25px,4vw,36px);color:#183b60}
+.g1-lead{font-size:17px;line-height:1.65;color:#526780;max-width:560px}
+.g1-btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}
+.g1-btn{border-radius:14px;padding:13px 18px;font-weight:900;box-shadow:0 5px 0 #172d4720}
+.g1-btn.primary{background:var(--coral);color:white}
+.g1-btn.secondary{background:#e7e1ff;color:#4d3aa5}
+.g1-btn.gold{background:var(--gold);color:#68410c}
+.g1-art{min-height:340px;display:grid;place-items:center;position:relative}
+.g1-island{width:min(100%,400px);aspect-ratio:1;border-radius:48% 52% 45% 55%;background:linear-gradient(150deg,#b5f3c6 0 28%,#55cba5 29% 53%,#219e9c 54%);border:9px solid #fff;box-shadow:0 15px 0 #2b897b30;position:relative;transform:rotate(-5deg)}
+.g1-island:before{content:"";position:absolute;inset:14% 13% 18% 19%;background
