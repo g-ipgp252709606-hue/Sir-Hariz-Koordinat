@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pengembaraan Koordinat & Misi Lanun</title>
+<title>Misi Koordinat: Batman Superhero Edition</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh;background:#0f2b48}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh;background:#05070c;color:#e1e7ed}
 button{font:inherit;cursor:pointer;border:0;transition:transform .15s,filter .15s}
-button:hover{transform:translateY(-2px);filter:brightness(1.04)}
+button:hover{transform:translateY(-2px);filter:brightness(1.1)}
 
-/* SWITCHER BAR */
+/* TOP SWITCHER BAR */
 .top-nav {
-  background: #081a2d;
+  background: #000000;
   padding: 12px 16px;
   display: flex;
   justify-content: center;
@@ -21,13 +21,13 @@ button:hover{transform:translateY(-2px);filter:brightness(1.04)}
   position: sticky;
   top: 0;
   z-index: 99999;
-  border-bottom: 2px solid #1c3d5e;
+  border-bottom: 2px solid #ffd70033;
 }
 .top-nav span { color: #fff; font-weight: 800; font-size: 14px; }
 .nav-btn {
-  background: #153454;
-  color: #cce4ff;
-  border: 2px solid #2d557d;
+  background: #121926;
+  color: #8fa3bf;
+  border: 2px solid #23324a;
   padding: 8px 18px;
   border-radius: 20px;
   font-weight: 800;
@@ -35,105 +35,108 @@ button:hover{transform:translateY(-2px);filter:brightness(1.04)}
   cursor: pointer;
 }
 .nav-btn.active {
-  background: #ffd166;
-  color: #4a3000;
+  background: #ffd700;
+  color: #000000;
   border-color: #ffffff;
-  box-shadow: 0 0 10px rgba(255, 209, 102, 0.6);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
 }
 
 .game-sec { display: none; }
 .game-sec.active { display: block; }
 
-/* STYLES GAME 1 */
+/* =========================================================
+   PERMAINAN 1: BATMAN SUPERHERO THEME
+   ========================================================= */
 #game1-root {
-  --navy:#102746;--ink:#20334f;--cream:#fff9e9;--gold:#ffd166;--coral:#ff786b;
-  --teal:#42d6c4;--purple:#8b72f8;--sky:#9be7ff;--green:#42c987;
-  color:var(--ink);
-  background:radial-gradient(circle at 10% 10%,#d8fbff 0,transparent 30%),linear-gradient(135deg,#f9edce,#d5f5e9 55%,#d9d4ff);
+  --bat-black:#0a0e17;
+  --bat-panel:#121824;
+  --bat-yellow:#ffd700;
+  --bat-blue:#1ea7fd;
+  --bat-red:#ff3b30;
+  --bat-green:#34c759;
+  --bat-border:#232f45;
+  color:#e1e7ed;
+  background: radial-gradient(circle at 50% 10%, #151f32 0%, #080c14 70%);
   min-height: calc(100vh - 56px);
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 .g1-app{max-width:1120px;margin:auto;padding:18px}
 .g1-topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
-.g1-brand{font-weight:950;letter-spacing:.4px;font-size:clamp(16px,3vw,22px);color:#17385a}
-.g1-brand span{display:inline-grid;place-items:center;background:var(--gold);border-radius:12px;padding:7px;margin-right:7px}
+.g1-brand{font-weight:950;letter-spacing:.5px;font-size:clamp(16px,3vw,22px);color:var(--bat-yellow)}
+.g1-brand span{display:inline-grid;place-items:center;background:var(--bat-yellow);color:#000;border-radius:12px;padding:7px;margin-right:7px;box-shadow:0 0 10px rgba(255, 215, 0, 0.4)}
 .g1-top-actions{display:flex;gap:8px;flex-wrap:wrap}
-.g1-pill{border:2px solid #ffffffaa;background:#ffffffb8;border-radius:999px;padding:9px 13px;font-weight:800;color:#28405f}
+.g1-pill{border:2px solid var(--bat-border);background:#121926cc;border-radius:999px;padding:9px 15px;font-weight:800;color:#c0d1e5}
 .g1-screen{display:none;animation:g1-enter .25s ease}
 .g1-screen.active{display:block}
 @keyframes g1-enter{from{opacity:.2;transform:translateY(7px)}to{opacity:1;transform:none}}
-.g1-panel{background:#ffffffd9;border:2px solid #fff;border-radius:25px;padding:clamp(18px,3vw,30px);box-shadow:0 16px 35px #344d7020}
+.g1-panel{background:var(--bat-panel);border:2px solid var(--bat-border);border-radius:25px;padding:clamp(18px,3vw,30px);box-shadow:0 16px 35px rgba(0,0,0,0.6)}
 .g1-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;min-height:490px;overflow:hidden;position:relative}
-.g1-eyebrow{display:inline-block;background:#dcfff4;color:#16755e;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.7px}
-.g1-hero h1{font-size:clamp(36px,6vw,67px);line-height:.98;letter-spacing:-2px;margin:17px 0 14px;color:#153b62}
-.g1-hero h1 em{font-style:normal;color:#f06d56}
-.g1-panel h2{margin:0 0 10px;font-size:clamp(25px,4vw,36px);color:#183b60}
-.g1-lead{font-size:17px;line-height:1.65;color:#526780;max-width:560px}
+.g1-eyebrow{display:inline-block;background:#281e00;color:var(--bat-yellow);padding:7px 14px;border:1px solid #7a6300;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.7px}
+.g1-hero h1{font-size:clamp(36px,6vw,65px);line-height:.98;letter-spacing:-1px;margin:17px 0 14px;color:#ffffff}
+.g1-hero h1 em{font-style:normal;color:var(--bat-yellow);text-shadow:0 0 15px rgba(255,215,0,0.3)}
+.g1-panel h2{margin:0 0 10px;font-size:clamp(25px,4vw,36px);color:#ffffff}
+.g1-lead{font-size:17px;line-height:1.65;color:#9cb0c9;max-width:560px}
 .g1-btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}
-.g1-btn{border-radius:14px;padding:13px 18px;font-weight:900;box-shadow:0 5px 0 #172d4720}
-.g1-btn.primary{background:var(--coral);color:white}
-.g1-btn.secondary{background:#e7e1ff;color:#4d3aa5}
-.g1-btn.gold{background:var(--gold);color:#68410c}
+.g1-btn{border-radius:14px;padding:13px 20px;font-weight:900;box-shadow:0 5px 0 #000000}
+.g1-btn.primary{background:var(--bat-yellow);color:#000}
+.g1-btn.secondary{background:#1d293d;color:#7ec2ff;border:1px solid #354b6e}
+.g1-btn.gold{background:#2a2100;color:var(--bat-yellow);border:1px solid #826800}
 .g1-art{min-height:340px;display:grid;place-items:center;position:relative}
-.g1-island{width:min(100%,400px);aspect-ratio:1;border-radius:48% 52% 45% 55%;background:linear-gradient(150deg,#b5f3c6 0 28%,#55cba5 29% 53%,#219e9c 54%);border:9px solid #fff;box-shadow:0 15px 0 #2b897b30;position:relative;transform:rotate(-5deg)}
-.g1-island:before{content:"";position:absolute;inset:14% 13% 18% 19%;background:#f7d891;border-radius:50%;transform:rotate(25deg)}
-.g1-palm{position:absolute;font-size:clamp(36px,7vw,65px);filter:drop-shadow(0 4px 0 #244d4530)}
-.g1-palm.p1{top:10%;left:13%}.g1-palm.p2{right:9%;top:28%}.g1-palm.p3{left:30%;bottom:7%}
-.g1-treasure{position:absolute;top:42%;left:41%;font-size:clamp(60px,9vw,90px);transform:rotate(5deg);filter:drop-shadow(0 8px 0 #6a4b2625);animation:g1-bob 2s ease-in-out infinite}
-@keyframes g1-bob{50%{transform:translateY(-9px) rotate(5deg)}}
-.g1-cloud{position:absolute;font-size:44px;opacity:.85}.g1-cloud.c1{top:5%;right:2%}.g1-cloud.c2{left:0;bottom:10%}
+.g1-island{width:min(100%,380px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle, #25334c 0%, #0a0e17 80%);border:4px solid var(--bat-yellow);box-shadow:0 0 25px rgba(255,215,0,0.25);position:relative;display:flex;align-items:center;justify-content:center}
+.g1-bat-signal{font-size:clamp(100px,15vw,150px);filter:drop-shadow(0 0 20px var(--bat-yellow));animation:g1-pulse 2.5s ease-in-out infinite}
+@keyframes g1-pulse{0%,100%{transform:scale(1);opacity:0.9}50%{transform:scale(1.08);opacity:1}}
 .g1-feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-.g1-feature{padding:17px;border-radius:18px;background:#ffffffb8;border:1px solid #fff}
-.g1-feature b{display:block;margin:6px 0}.g1-feature span{font-size:13px;color:#60728a;line-height:1.4}
+.g1-feature{padding:17px;border-radius:18px;background:#151c2a;border:1px solid var(--bat-border)}
+.g1-feature b{display:block;margin:6px 0;color:var(--bat-yellow)}.g1-feature span{font-size:13px;color:#8ba2c0;line-height:1.4}
 .g1-section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin-bottom:20px}
-.g1-muted{color:#61738b;line-height:1.55}
+.g1-muted{color:#8ba2c0;line-height:1.55}
 .g1-worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.g1-world-card{border-radius:22px;padding:20px;border:2px solid #fff;min-height:225px;display:flex;flex-direction:column;align-items:flex-start;box-shadow:0 9px 20px #263d5810}
-.g1-world-card.forest{background:linear-gradient(145deg,#d7f8c9,#8de0a6)}
-.g1-world-card.treasure-world{background:linear-gradient(145deg,#fff0bd,#ffc879)}
-.g1-world-card.space{background:linear-gradient(145deg,#dcd8ff,#9da9ff)}
+.g1-world-card{border-radius:22px;padding:20px;border:2px solid var(--bat-border);min-height:225px;display:flex;flex-direction:column;align-items:flex-start;background:#151d2b;box-shadow:0 9px 20px rgba(0,0,0,0.4)}
+.g1-world-card.forest{border-color:#34c75955}
+.g1-world-card.treasure-world{border-color:#ffd70055}
+.g1-world-card.space{border-color:#1ea7fd55}
 .g1-world-icon{font-size:48px;margin-bottom:10px}
-.g1-world-card p{color:#53667c;font-size:14px;line-height:1.45;flex:1}
-.g1-world-card button{width:100%;padding:11px;border-radius:12px;background:#173b60;color:white;font-weight:850}
-.g1-world-card.locked{filter:grayscale(.45);opacity:.7}
-.g1-badge{display:inline-block;padding:5px 9px;background:#ffffffb9;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:9px}
+.g1-world-card p{color:#8ba2c0;font-size:14px;line-height:1.45;flex:1}
+.g1-world-card button{width:100%;padding:11px;border-radius:12px;background:var(--bat-yellow);color:#000;font-weight:900}
+.g1-world-card.locked{filter:grayscale(.85);opacity:.5}
+.g1-badge{display:inline-block;padding:5px 9px;background:#222f45;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:9px;color:var(--bat-yellow)}
 .g1-game-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:18px}
-.g1-game-board{background:#f5fbff;border:2px solid #d9e9f6;border-radius:18px;padding:15px}
-.g1-col-labels{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:0 0 5px 27px;text-align:center;font-weight:950;color:#365b83}
+.g1-game-board{background:#0e131d;border:2px solid var(--bat-border);border-radius:18px;padding:15px}
+.g1-col-labels{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:0 0 5px 27px;text-align:center;font-weight:950;color:var(--bat-yellow)}
 .g1-board-line{display:grid;grid-template-columns:23px 1fr;gap:4px}
-.g1-row-labels{display:grid;grid-template-rows:repeat(6,1fr);gap:4px;text-align:center;font-weight:950;color:#365b83}
+.g1-row-labels{display:grid;grid-template-rows:repeat(6,1fr);gap:4px;text-align:center;font-weight:950;color:var(--bat-yellow)}
 .g1-row-labels span{display:grid;place-items:center}
 .g1-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
-.g1-cell{aspect-ratio:1;border-radius:8px;border:2px solid #d2e2ef;background:white;display:grid;place-items:center;font-size:clamp(17px,3.8vw,30px);min-width:0}
-.g1-cell.pickable:hover{background:#e8fff7;border-color:#42c987}
-.g1-cell.target{background:#ffedaa;border-color:#f4c34e}
-.g1-cell.player{background:#bdf3df;border-color:#52c99b}
-.g1-cell.obstacle{background:#ffd5cc;border-color:#f59b8a}
-.g1-cell.visited{background:#dcecff}
+.g1-cell{aspect-ratio:1;border-radius:8px;border:2px solid #233047;background:#151d2b;display:grid;place-items:center;font-size:clamp(17px,3.8vw,30px);min-width:0;color:#fff}
+.g1-cell.pickable:hover{background:#1e2b40;border-color:var(--bat-yellow)}
+.g1-cell.target{background:#3b3100;border-color:var(--bat-yellow)}
+.g1-cell.player{background:#0c3822;border-color:var(--bat-green)}
+.g1-cell.obstacle{background:#3a1114;border-color:var(--bat-red)}
+.g1-cell.visited{background:#192336;color:#526b94}
 .g1-cell:disabled{cursor:default}
 .g1-side-panel{display:flex;flex-direction:column;gap:12px}
-.g1-mission-box{background:#fff5d8;border:2px solid #ffe3a0;border-radius:17px;padding:17px}
-.g1-mission-title{font-weight:950;color:#805018;font-size:13px;text-transform:uppercase;letter-spacing:.7px}
-.g1-target-big{font-size:35px;font-weight:1000;color:#e66b4f;margin:6px 0}
-.g1-progressline{height:9px;border-radius:999px;background:#e5ebf2;overflow:hidden;margin-top:10px}
-.g1-progressline div{height:100%;background:linear-gradient(90deg,#42c987,#6e8cf7);width:0;transition:width .25s}
-.g1-feedback{min-height:50px;border-radius:13px;background:#f0f5ff;padding:12px;font-weight:750;line-height:1.4}
+.g1-mission-box{background:#182030;border:2px solid var(--bat-border);border-radius:17px;padding:17px}
+.g1-mission-title{font-weight:950;color:var(--bat-yellow);font-size:13px;text-transform:uppercase;letter-spacing:.7px}
+.g1-target-big{font-size:35px;font-weight:1000;color:#ffffff;margin:6px 0;text-shadow:0 0 10px rgba(255,255,255,0.2)}
+.g1-progressline{height:9px;border-radius:999px;background:#0c1017;overflow:hidden;margin-top:10px}
+.g1-progressline div{height:100%;background:linear-gradient(90deg,var(--bat-yellow),var(--bat-blue));width:0;transition:width .25s}
+.g1-feedback{min-height:50px;border-radius:13px;background:#131a26;border:1px solid var(--bat-border);padding:12px;font-weight:750;line-height:1.4;color:#d5e2f2}
 .g1-controls{display:flex;gap:8px;flex-wrap:wrap}
 .g1-controls .g1-btn{flex:1;padding:11px 12px}
-.g1-small{font-size:12px;color:#66788e}
+.g1-small{font-size:12px;color:#7e95b3}
 .g1-center{text-align:center}
 .g1-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-.g1-stat-card{padding:18px;border-radius:18px;background:#f0edff;text-align:center}
-.g1-stat-card strong{display:block;font-size:30px;color:#6546c8}
+.g1-stat-card{padding:18px;border-radius:18px;background:#151d2b;border:1px solid var(--bat-border);text-align:center}
+.g1-stat-card strong{display:block;font-size:30px;color:var(--bat-yellow)}
 .g1-badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:20px 0}
-.g1-badge-trophy{padding:14px;border-radius:16px;background:#fff2c8;border:2px solid #ffe3a0;font-weight:850}
+.g1-badge-trophy{padding:14px;border-radius:16px;background:#241d00;border:2px solid #856a00;color:var(--bat-yellow);font-weight:850}
 .g1-instructions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.g1-step{background:#f4f7ff;border-radius:16px;padding:17px}
-.g1-step .num{width:32px;height:32px;border-radius:10px;background:#dcd5ff;display:grid;place-items:center;font-weight:950;margin-bottom:9px}
-.g1-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#173b60;color:#fff;padding:12px 18px;border-radius:999px;font-weight:800;box-shadow:0 8px 25px #142a4530;display:none;z-index:999}
-.g1-footer{text-align:center;color:#657891;font-size:12px;padding:22px 5px}
+.g1-step{background:#151d2b;border:1px solid var(--bat-border);border-radius:16px;padding:17px}
+.g1-step .num{width:32px;height:32px;border-radius:10px;background:#233047;color:var(--bat-yellow);display:grid;place-items:center;font-weight:950;margin-bottom:9px}
+.g1-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--bat-yellow);color:#000;padding:12px 22px;border-radius:999px;font-weight:900;box-shadow:0 8px 25px rgba(255,215,0,0.4);display:none;z-index:999}
+.g1-footer{text-align:center;color:#60738c;font-size:12px;padding:22px 5px}
 
-/* STYLES GAME 2 */
+/* PERMAINAN 2 STYLES */
 #game2-root {
   background:linear-gradient(180deg,#45c9f5 0%,#0788c8 52%,#045b8d 100%);
   min-height: calc(100vh - 56px);
@@ -192,86 +195,87 @@ button:hover{transform:translateY(-2px);filter:brightness(1.04)}
 
 <nav class="top-nav">
   <span>🎮 PILIH PERMAINAN:</span>
-  <button class="nav-btn active" onclick="switchGameMode(1)">1. Misi Penyelamat Dunia</button>
+  <button class="nav-btn active" onclick="switchGameMode(1)">1. Batman Superhero Rescue</button>
   <button class="nav-btn" onclick="switchGameMode(2)">2. Misi Lanun (Selamatkan Kapal!)</button>
 </nav>
 
-<!-- GAME 1 CONTAINER -->
+<!-- GAME 1: BATMAN SUPERHERO RESCUE -->
 <div id="game1-root" class="game-sec active">
   <div class="g1-app">
     <nav class="g1-topbar">
-      <div class="g1-brand"><span>🧭</span>MISI KOORDINAT</div>
+      <div class="g1-brand"><span>🦇</span>BAT-KOORDINAT</div>
       <div class="g1-top-actions">
-        <button class="g1-pill" id="musicToggle" aria-pressed="false">🎵 Muzik: OFF</button>
-        <button class="g1-pill" onclick="showScreen('achievements')">🏆 Pencapaian</button>
+        <button class="g1-pill" id="musicToggle" aria-pressed="false">🎵 Audio Batcave: OFF</button>
+        <button class="g1-pill" onclick="showScreen('achievements')">🏆 Pencapaian Wira</button>
       </div>
     </nav>
 
     <section class="g1-screen active" id="home">
       <div class="g1-panel g1-hero">
         <div>
-          <span class="g1-eyebrow">🎒 PERMAINAN MATEMATIK • TAHUN 4–6</span>
-          <h1>Pengembaraan <em>Koordinat</em></h1>
-          <p class="g1-lead">Sebuah peta ajaib telah hilang! Bantu Kapten Kiko mencari artifak, menyelamatkan rakan dan membuka rahsia tiga dunia — dengan kemahiran koordinat kamu.</p>
+          <span class="g1-eyebrow">🦇 BATMAN KOORDINAT • TAHUN 4–6</span>
+          <h1>Misi Penyelamat <em>Gotham</em></h1>
+          <p class="g1-lead">Isyarat Bat-Signal telah dinyalakan! Bantu Batman menjejak penjahat, menyelamatkan mangsa dan mengumpul gajet superhero menggunakan koordinat grid.</p>
           <div class="g1-btn-row">
-            <button class="g1-btn primary" onclick="showScreen('map')">⚓ MULA PENGEMBARAAN</button>
+            <button class="g1-btn primary" onclick="showScreen('map')">🦇 MULA MISI BATMAN</button>
             <button class="g1-btn secondary" onclick="showScreen('howto')">📖 CARA BERMAIN</button>
           </div>
         </div>
         <div class="g1-art">
-          <div class="g1-cloud c1">☁️</div><div class="g1-cloud c2">☁️</div>
-          <div class="g1-island"><span class="g1-palm p1">🌴</span><span class="g1-palm p2">🌴</span><span class="g1-palm p3">🌳</span><span class="g1-treasure">🗺️</span></div>
+          <div class="g1-island">
+            <div class="g1-bat-signal">🦇</div>
+          </div>
         </div>
       </div>
       <div class="g1-feature-row">
-        <div class="g1-feature">🧩 <b>Misi Interaktif</b><span>Pilih petak pada grid untuk mencari objek tersembunyi.</span></div>
-        <div class="g1-feature">⭐ <b>Kumpul Ganjaran</b><span>Dapatkan mata, bintang dan lencana selepas cabaran.</span></div>
-        <div class="g1-feature">🌍 <b>Teroka 3 Dunia</b><span>Hutan Misteri, Pulau Harta Karun dan Angkasa Lepas.</span></div>
+        <div class="g1-feature">🧩 <b>Radar Batcomputer</b><span>Nyahkod koordinat pada grid radar untuk mencari sasaran.</span></div>
+        <div class="g1-feature">⭐ <b>Teknologi Wayne</b><span>Kumpul Batarang, Kristal Tenaga dan Lencana Superhero.</span></div>
+        <div class="g1-feature">🌃 <b>3 Zon Bahaya</b><span>Bandar Gotham, Vault Batcave, dan Stesen Angkasa Watchtower.</span></div>
       </div>
     </section>
 
     <section class="g1-screen" id="howto">
       <div class="g1-panel">
-        <div class="g1-section-head"><div><span class="g1-eyebrow">PANDUAN PENGEMBARA</span><h2>Cara Bermain</h2><p class="g1-muted">Ingat: koordinat ditulis sebagai (huruf, nombor).</p></div><button class="g1-btn secondary" onclick="showScreen('home')">← Kembali</button></div>
+        <div class="g1-section-head"><div><span class="g1-eyebrow">PANDUAN SUPERHERO</span><h2>Cara Bermain</h2><p class="g1-muted">Ingat arahan Batman: koordinat sentiasa ditulis sebagai (Lajur Huruf, Baris Nombor).</p></div><button class="g1-btn secondary" onclick="showScreen('home')">← Kembali</button></div>
         <div class="g1-instructions">
-          <div class="g1-step"><div class="num">1</div><h3>🗺️ Pilih dunia</h3><p class="g1-muted">Buka peta dan pilih misi yang tersedia. Selesaikan misi untuk membuka dunia seterusnya.</p></div>
-          <div class="g1-step"><div class="num">2</div><h3>🔎 Cari sasaran</h3><p class="g1-muted">Baca koordinat sasaran. Huruf menunjukkan lajur dan nombor menunjukkan baris.</p></div>
-          <div class="g1-step"><div class="num">3</div><h3>⭐ Kumpul mata</h3><p class="g1-muted">Tekan petak yang betul. Jawapan tepat memberikan 10 mata dan membantu kamu melengkapkan misi.</p></div>
+          <div class="g1-step"><div class="num">1</div><h3>🗺️ Pilih Misi</h3><p class="g1-muted">Buka Bat-Computer dan pilih zon operasi yang terbuka.</p></div>
+          <div class="g1-step"><div class="num">2</div><h3>🔎 Jejak Koordinat</h3><p class="g1-muted">Baca koordinat sasaran. Huruf = Lajur menegak, Nombor = Baris melintang.</p></div>
+          <div class="g1-step"><div class="num">3</div><h3>⭐ Selamatkan Gotham</h3><p class="g1-muted">Ketik petak yang tepat untuk melengkapkan misi dan dapatkan 10 mata wira!</p></div>
         </div>
-        <div class="g1-mission-box" style="margin-top:16px"><b>💡 Tip Matematik:</b> Cari huruf dahulu (A hingga F), kemudian cari nombor baris (1 hingga 6). Contoh: (C, 3) ialah lajur C, baris 3.</div>
+        <div class="g1-mission-box" style="margin-top:16px"><b>💡 Tip Batcomputer:</b> Cari huruf paksi mendatar dahulu (A hingga F), kemudian cari nombor baris (1 hingga 6). Contoh: (C, 3) = Lajur C, Baris 3.</div>
       </div>
     </section>
 
     <section class="g1-screen" id="map">
       <div class="g1-panel">
-        <div class="g1-section-head"><div><span class="g1-eyebrow">PETA DUNIA</span><h2>Pilih Misi Kamu</h2><p class="g1-muted">Setiap dunia membawa cabaran koordinat yang berbeza.</p></div><button class="g1-btn secondary" onclick="showScreen('home')">⌂ Menu Utama</button></div>
+        <div class="g1-section-head"><div><span class="g1-eyebrow">RADAR PETA GOTHAM</span><h2>Pilih Misi Superhero</h2><p class="g1-muted">Pilih sektor operasi Batman kamu.</p></div><button class="g1-btn secondary" onclick="showScreen('home')">⌂ Menu Utama</button></div>
         <div class="g1-worlds">
-          <article class="g1-world-card forest" id="worldCard0"><span class="g1-badge">DUNIA 1 • TERBUKA</span><div class="g1-world-icon">🌳</div><h3>Hutan Misteri</h3><p>Cari haiwan yang tersesat di dalam hutan. Belajar mengenal pasti lokasi pada grid.</p><button onclick="startWorld(0)">Masuki Hutan →</button></article>
-          <article class="g1-world-card treasure-world locked" id="worldCard1"><span class="g1-badge" id="badge1">🔒 DIKUNCI</span><div class="g1-world-icon">🏴‍☠️</div><h3>Pulau Harta Karun</h3><p>Elakkan batu dan temukan peti harta karun berdasarkan koordinat.</p><button id="worldBtn1" onclick="startWorld(1)">Selesaikan Dunia 1 dahulu</button></article>
-          <article class="g1-world-card space locked" id="worldCard2"><span class="g1-badge" id="badge2">🔒 DIKUNCI</span><div class="g1-world-icon">🚀</div><h3>Angkasa Lepas</h3><p>Bantu angkasawan mencari kristal tenaga dalam misi koordinat terakhir.</p><button id="worldBtn2" onclick="startWorld(2)">Selesaikan Dunia 2 dahulu</button></article>
+          <article class="g1-world-card forest" id="worldCard0"><span class="g1-badge">ZON 1 • AKTIF</span><div class="g1-world-icon">🌃</div><h3>Bandar Gotham</h3><p>Jejak gajet Batman dan selamatkan orang awam daripada ancaman penjahat.</p><button onclick="startWorld(0)">Masuki Gotham →</button></article>
+          <article class="g1-world-card treasure-world locked" id="worldCard1"><span class="g1-badge" id="badge1">🔒 DIKUNCI</span><div class="g1-world-icon">🦇</div><h3>Vault Batcave</h3><p>Nyahkod kunci koordinat rahsia di dalam Batcave untuk mengambil semula gajet Wayne Tech.</p><button id="worldBtn1" onclick="startWorld(1)">Selesaikan Zon 1 dahulu</button></article>
+          <article class="g1-world-card space locked" id="worldCard2"><span class="g1-badge" id="badge2">🔒 DIKUNCI</span><div class="g1-world-icon">🚀</div><h3>Stesen Watchtower</h3><p>Bantu Justice League mencari reaktor tenaga untuk menghentikan serangan alien.</p><button id="worldBtn2" onclick="startWorld(2)">Selesaikan Zon 2 dahulu</button></article>
         </div>
         <div class="g1-feature-row">
-          <div class="g1-feature">⭐ <b>Skor terkumpul</b><span id="mapScore">0 mata</span></div>
-          <div class="g1-feature">🧭 <b>Misi selesai</b><span id="mapMissions">0 daripada 3</span></div>
-          <div class="g1-feature">🎖️ <b>Lencana</b><span id="mapBadges">Belum diperoleh</span></div>
+          <div class="g1-feature">⭐ <b>Skor Wira</b><span id="mapScore">0 mata</span></div>
+          <div class="g1-feature">🧭 <b>Misi Selesai</b><span id="mapMissions">0 daripada 3</span></div>
+          <div class="g1-feature">🎖️ <b>Lencana Batman</b><span id="mapBadges">Belum diperoleh</span></div>
         </div>
       </div>
     </section>
 
     <section class="g1-screen" id="game">
       <div class="g1-panel">
-        <div class="g1-section-head"><div><span class="g1-eyebrow" id="worldEyebrow">DUNIA 1</span><h2 id="worldTitle">Hutan Misteri</h2><p class="g1-muted" id="worldDescription">Cari sasaran pada grid koordinat.</p></div><button class="g1-btn secondary" onclick="showScreen('map')">🗺️ Peta Dunia</button></div>
+        <div class="g1-section-head"><div><span class="g1-eyebrow" id="worldEyebrow">ZON 1</span><h2 id="worldTitle">Bandar Gotham</h2><p class="g1-muted" id="worldDescription">Cari sasaran pada grid radar koordinat.</p></div><button class="g1-btn secondary" onclick="showScreen('map')">🗺️ Radar Peta</button></div>
         <div class="g1-game-layout">
           <div class="g1-game-board">
             <div class="g1-col-labels"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span></div>
             <div class="g1-board-line"><div class="g1-row-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div><div class="g1-grid" id="grid"></div></div>
-            <p class="g1-small">Pilih petak pada grid untuk menghantar watak ke lokasi itu.</p>
+            <p class="g1-small">Ketik petak pada radar untuk menghantar Batman ke lokasi tersebut.</p>
           </div>
           <div class="g1-side-panel">
-            <div class="g1-mission-box"><div class="g1-mission-title">🎯 Misi semasa</div><div id="missionText">Cari haiwan!</div><div class="g1-target-big" id="targetCoord">(C, 3)</div><div class="g1-small" id="targetHint">Di manakah sasaran?</div><div class="g1-progressline"><div id="progressFill"></div></div><p class="g1-small" id="progressText">0 / 5 sasaran</p></div>
-            <div class="g1-stats-grid" style="margin:0"><div class="g1-stat-card"><span>⭐ Skor</span><strong id="gameScore">0</strong></div><div class="g1-stat-card"><span>❤️ Nyawa</span><strong id="lives">3</strong></div><div class="g1-stat-card"><span>🎯 Tepat</span><strong id="correctCount">0</strong></div></div>
-            <div class="g1-feedback" id="feedback">Pilih petak yang sepadan dengan koordinat sasaran.</div>
-            <div class="g1-controls"><button class="g1-btn gold" onclick="repeatHint()">💡 Petunjuk</button><button class="g1-btn secondary" onclick="resetWorld()">↻ Mula Semula</button></div>
+            <div class="g1-mission-box"><div class="g1-mission-title">🎯 Misi Batman</div><div id="missionText">Jejak gajet Batman!</div><div class="g1-target-big" id="targetCoord">(C, 3)</div><div class="g1-small" id="targetHint">Di manakah sasaran?</div><div class="g1-progressline"><div id="progressFill"></div></div><p class="g1-small" id="progressText">0 / 5 sasaran</p></div>
+            <div class="g1-stats-grid" style="margin:0"><div class="g1-stat-card"><span>⭐ Skor</span><strong id="gameScore">0</strong></div><div class="g1-stat-card"><span>❤️ Perisai</span><strong id="lives">3</strong></div><div class="g1-stat-card"><span>🎯 Tepat</span><strong id="correctCount">0</strong></div></div>
+            <div class="g1-feedback" id="feedback">Pilih petak yang sepadan dengan koordinat Batcomputer.</div>
+            <div class="g1-controls"><button class="g1-btn gold" onclick="repeatHint()">💡 Bat-Petunjuk</button><button class="g1-btn secondary" onclick="resetWorld()">↻ Mula Semula</button></div>
           </div>
         </div>
       </div>
@@ -279,25 +283,25 @@ button:hover{transform:translateY(-2px);filter:brightness(1.04)}
 
     <section class="g1-screen" id="victory">
       <div class="g1-panel g1-center">
-        <div style="font-size:76px;margin:12px">🏆</div><span class="g1-eyebrow">MISI SELESAI</span>
-        <h2 id="victoryTitle">Syabas, Pengembara!</h2>
-        <p class="g1-lead" style="margin:10px auto">Kamu telah menggunakan kemahiran koordinat untuk menyelesaikan cabaran ini.</p>
-        <div class="g1-stats-grid"><div class="g1-stat-card">⭐ Skor misi<strong id="missionScore">0</strong></div><div class="g1-stat-card">🎯 Jawapan tepat<strong id="missionCorrect">0/5</strong></div><div class="g1-stat-card">🏅 Lencana<strong id="missionBadge">1</strong></div></div>
-        <div class="g1-badges"><div class="g1-badge-trophy">🧭 Pencari Koordinat</div><div class="g1-badge-trophy">✨ Pengembara Hebat</div></div>
-        <div class="g1-btn-row" style="justify-content:center"><button class="g1-btn primary" id="continueBtn" onclick="continueAfterWin()">Teruskan Pengembaraan →</button><button class="g1-btn secondary" onclick="showScreen('map')">Kembali ke Peta</button></div>
+        <div style="font-size:76px;margin:12px">🦇</div><span class="g1-eyebrow">MISI SUPERHERO SELESAI</span>
+        <h2 id="victoryTitle">Syabas, Batman!</h2>
+        <p class="g1-lead" style="margin:10px auto">Kemahiran koordinat kamu telah menyelamatkan zon ini daripada kemusnahan!</p>
+        <div class="g1-stats-grid"><div class="g1-stat-card">⭐ Skor Misi<strong id="missionScore">0</strong></div><div class="g1-stat-card">🎯 Ketepatan<strong id="missionCorrect">0/5</strong></div><div class="g1-stat-card">🏅 Lencana<strong id="missionBadge">1</strong></div></div>
+        <div class="g1-badges"><div class="g1-badge-trophy">🦇 Pelindung Gotham</div><div class="g1-badge-trophy">✨ Dark Knight Koordinat</div></div>
+        <div class="g1-btn-row" style="justify-content:center"><button class="g1-btn primary" id="continueBtn" onclick="continueAfterWin()">Teruskan Misi →</button><button class="g1-btn secondary" onclick="showScreen('map')">Kembali ke Radar</button></div>
       </div>
     </section>
 
     <section class="g1-screen" id="achievements">
       <div class="g1-panel">
-        <div class="g1-section-head"><div><span class="g1-eyebrow">KOLEKSI KAMU</span><h2>🏆 Pusat Pencapaian</h2><p class="g1-muted">Kemajuan disimpan dalam pelayar ini.</p></div><button class="g1-btn secondary" onclick="showScreen('map')">← Kembali</button></div>
-        <div class="g1-stats-grid"><div class="g1-stat-card">⭐ Jumlah skor<strong id="achScore">0</strong></div><div class="g1-stat-card">🗺️ Dunia selesai<strong id="achWorlds">0/3</strong></div><div class="g1-stat-card">🎯 Jawapan tepat<strong id="achCorrect">0</strong></div></div>
-        <h3>Lencana Pengembara</h3><div class="g1-badges" id="badgeCollection"></div>
-        <div class="g1-mission-box"><b>📚 Apa yang kamu pelajari?</b><p class="g1-muted">Membaca koordinat pada grid, memadankan lajur dan baris, serta menggunakan koordinat untuk mencari lokasi.</p></div>
-        <div class="g1-btn-row"><button class="g1-btn gold" onclick="showScreen('map')">Pilih Misi</button><button class="g1-btn secondary" onclick="resetProgress()">Padam kemajuan & mula semula</button></div>
+        <div class="g1-section-head"><div><span class="g1-eyebrow">GALERI WIRA</span><h2>🏆 Pusat Pencapaian Batman</h2><p class="g1-muted">Rekod perkhidmatan disimpan dalam Batcomputer.</p></div><button class="g1-btn secondary" onclick="showScreen('map')">← Kembali</button></div>
+        <div class="g1-stats-grid"><div class="g1-stat-card">⭐ Jumlah Skor<strong id="achScore">0</strong></div><div class="g1-stat-card">🗺️ Zon Selesai<strong id="achWorlds">0/3</strong></div><div class="g1-stat-card">🎯 Sasaran Tepat<strong id="achCorrect">0</strong></div></div>
+        <h3>Lencana Kebanggaan Wira</h3><div class="g1-badges" id="badgeCollection"></div>
+        <div class="g1-mission-box"><b>📚 Kemahiran yang dikuasai:</b><p class="g1-muted">Membaca koordinat pada grid radar, memadankan paksi-x dan paksi-y, serta menavigasi Batman ke lokasi tepat.</p></div>
+        <div class="g1-btn-row"><button class="g1-btn gold" onclick="showScreen('map')">Pilih Zon Operasi</button><button class="g1-btn secondary" onclick="resetProgress()">Padam rekod & mula semula</button></div>
       </div>
     </section>
-    <footer class="g1-footer">Pengembaraan Koordinat • Sumber pembelajaran Matematik interaktif</footer>
+    <footer class="g1-footer">Batman Koordinat Edition • Sumber Pembelajaran Matematik Interaktif</footer>
   </div>
   <div class="g1-toast" id="toast"></div>
 </div>
@@ -365,46 +369,46 @@ function switchGameMode(mode) {
   document.getElementById('game2-root').classList.toggle('active', mode === 2);
 }
 
-/* LOGIK PERMAINAN 1 */
+/* BATMAN GAME LOGIC */
 (function(){
   const letters=['A','B','C','D','E','F'];
   const worlds=[
-   {name:'Hutan Misteri',icon:'🌳',desc:'Cari haiwan yang tersesat di dalam hutan.',target:'haiwan',items:['🦊','🐸','🦋','🐰','🦉'],obstacle:'🌿',hint:'Petunjuk: cari huruf lajur dahulu, kemudian nombor baris.'},
-   {name:'Pulau Harta Karun',icon:'🏴‍☠️',desc:'Elakkan batu dan cari peti harta karun.',target:'peti harta karun',items:['💎','🪙','🗝️','🏆','💰'],obstacle:'🪨',hint:'Petunjuk: koordinat menunjukkan satu petak tepat pada peta.'},
-   {name:'Angkasa Lepas',icon:'🚀',desc:'Cari kristal tenaga untuk menyelamatkan angkasawan.',target:'kristal tenaga',items:['💠','👾','🛰️','🌟','🪐'],obstacle:'☄️',hint:'Petunjuk: baca koordinat dalam susunan (lajur, baris).'}
+   {name:'Bandar Gotham',icon:'🌃',desc:'Jejak gajet Batman dan selamatkan mangsa daripada penjahat.',target:'gajet',items:['🦇','💎','🔦','🚗','📱'],obstacle:'💣',hint:'Petunjuk Batcomputer: cari huruf lajur dahulu, kemudian nombor baris.'},
+   {name:'Vault Batcave',icon:'🦇',desc:'Buka vault kunci rahsia untuk memulihkan alatan Wayne Tech.',target:'peti tech',items:['⚙️','🔋','🗝️','🛡️','💻'],obstacle:'⚠️',hint:'Petunjuk Batcomputer: koordinat menunjukkan lokasi tepat di dalam vault.'},
+   {name:'Stesen Watchtower',icon:'🚀',desc:'Cari kristal reaktor tenaga untuk menghentikan serangan alien.',target:'reaktor',items:['💠','🛸','🛰️','⚡','🪐'],obstacle:'☄️',hint:'Petunjuk Batcomputer: baca koordinat dalam susunan (lajur, baris).'}
   ];
   let state={score:0,correctTotal:0,unlocked:1,completed:[],badges:[],activeWorld:0,round:0,correct:0,lives:3,target:null,obstacles:[],player:{x:0,y:5},used:[],music:false};
-  try{const saved=JSON.parse(localStorage.getItem('misiKoordinatSave')||'null');if(saved)state={...state,...saved,activeWorld:0,round:0,correct:0,lives:3,target:null,obstacles:[],player:{x:0,y:5},used:[]}}catch(e){}
+  try{const saved=JSON.parse(localStorage.getItem('batmanKoordinatSave')||'null');if(saved)state={...state,...saved,activeWorld:0,round:0,correct:0,lives:3,target:null,obstacles:[],player:{x:0,y:5},used:[]}}catch(e){}
   let audioContext=null,musicTimer=null,musicStep=0;
 
   function sound(freq=600,duration=.12,type='sine',volume=.045){
    try{audioContext ||= new(window.AudioContext||window.webkitAudioContext)();if(audioContext.state==='suspended')audioContext.resume();let o=audioContext.createOscillator(),g=audioContext.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audioContext.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+duration);o.connect(g);g.connect(audioContext.destination);o.start();o.stop(audioContext.currentTime+duration)}catch(e){}
   }
-  function toggleMusic(){state.music=!state.music;const b=document.getElementById('musicToggle');b.textContent=state.music?'🎵 Muzik: ON':'🎵 Muzik: OFF';b.setAttribute('aria-pressed',String(state.music));if(state.music){const melody=[523,659,784,659,587,698,880,698];function tick(){if(!state.music)return;sound(melody[musicStep++%melody.length],.22,'triangle',.018)}tick();musicTimer=setInterval(tick,340)}else{clearInterval(musicTimer)}}
+  function toggleMusic(){state.music=!state.music;const b=document.getElementById('musicToggle');b.textContent=state.music?'🎵 Audio Batcave: ON':'🎵 Audio Batcave: OFF';b.setAttribute('aria-pressed',String(state.music));if(state.music){const melody=[220,277,330,277,220,261,329,261];function tick(){if(!state.music)return;sound(melody[musicStep++%melody.length],.22,'sawtooth',.015)}tick();musicTimer=setInterval(tick,340)}else{clearInterval(musicTimer)}}
   document.getElementById('musicToggle').addEventListener('click',toggleMusic);
 
-  function save(){try{localStorage.setItem('misiKoordinatSave',JSON.stringify({score:state.score,correctTotal:state.correctTotal,unlocked:state.unlocked,completed:state.completed,badges:state.badges}))}catch(e){}}
+  function save(){try{localStorage.setItem('batmanKoordinatSave',JSON.stringify({score:state.score,correctTotal:state.correctTotal,unlocked:state.unlocked,completed:state.completed,badges:state.badges}))}catch(e){}}
   window.showScreen = function(id){document.querySelectorAll('.g1-screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='map')updateMap();if(id==='achievements')updateAchievements();window.scrollTo({top:0,behavior:'smooth'})}
   function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.style.display='none',2300)}
   function randCell(){return{x:Math.floor(Math.random()*6),y:Math.floor(Math.random()*6)}}
   function same(a,b){return a.x===b.x&&a.y===b.y}
   function coord(p){return `(${letters[p.x]}, ${p.y+1})`}
-  window.startWorld = function(i){if(i>=state.unlocked){toast('Selesaikan dunia sebelumnya dahulu!');return}state.activeWorld=i;state.round=0;state.correct=0;state.lives=3;state.used=[];state.player={x:0,y:5};document.getElementById('worldTitle').textContent=worlds[i].name;document.getElementById('worldEyebrow').textContent=`DUNIA ${i+1} • MISI ${i+1}`;document.getElementById('worldDescription').textContent=worlds[i].desc;newTarget();showScreen('game')}
-  function newTarget(){state.target=randCell();while(same(state.target,state.player))state.target=randCell();state.obstacles=[];while(state.obstacles.length<5){let p=randCell();if(!same(p,state.target)&&!same(p,state.player)&&!state.obstacles.some(o=>same(o,p)))state.obstacles.push(p)}document.getElementById('missionText').textContent=['Selamatkan haiwan yang hilang!','Cari peti dan permata!','Kumpulkan kristal tenaga!'][state.activeWorld];document.getElementById('targetCoord').textContent=coord(state.target);document.getElementById('targetHint').textContent='Cari sasaran pada grid.';document.getElementById('feedback').textContent='Pilih petak yang sepadan dengan koordinat sasaran.';document.getElementById('progressFill').style.width=(state.round/5*100)+'%';document.getElementById('progressText').textContent=`${state.round} / 5 sasaran`;renderGrid();updateGameStats()}
-  function renderGrid(){const grid=document.getElementById('grid');grid.replaceChildren();for(let y=0;y<6;y++){for(let x=0;x<6;x++){let p={x,y},b=document.createElement('button');b.className='g1-cell pickable';b.setAttribute('aria-label',coord(p));if(same(p,state.target)){b.classList.add('target');b.textContent=worlds[state.activeWorld].items[state.round%5]}else if(state.obstacles.some(o=>same(o,p))){b.classList.add('obstacle');b.textContent=worlds[state.activeWorld].obstacle}else if(same(p,state.player)){b.classList.add('player');b.textContent='🧭'}else if(state.used.some(o=>same(o,p))){b.classList.add('visited');b.textContent='·'}b.addEventListener('click',()=>pickCell(p));grid.appendChild(b)}}}
-  function pickCell(p){if(!state.target)return;if(same(p,state.target)){state.correct++;state.correctTotal++;state.score+=10;state.round++;state.player={...p};document.getElementById('feedback').textContent='🎉 Tepat! Kamu menemui sasaran dan memperoleh 10 mata!';document.getElementById('feedback').style.background='#d9ffea';sound(660,.12);setTimeout(()=>sound(880,.2),100);save();updateGameStats();renderGrid();document.getElementById('progressFill').style.width=(state.round/5*100)+'%';document.getElementById('progressText').textContent=`${state.round} / 5 sasaran`;if(state.round>=5){setTimeout(finishWorld,500)}else{state.used.push({...p});setTimeout(newTarget,650)}}else{state.lives--;state.used.push({...p});document.getElementById('feedback').textContent=state.obstacles.some(o=>same(o,p))?'💥 Alamak! Ada halangan di situ. Cuba koordinat sasaran.':'Belum tepat! Semak huruf dan nombor sekali lagi.';document.getElementById('feedback').style.background='#ffe5e0';sound(210,.22,'sawtooth',.035);updateGameStats();renderGrid();if(state.lives<=0){document.getElementById('feedback').textContent='Nyawa habis! Tak mengapa — cuba semula dan baca koordinat dengan teliti.';setTimeout(()=>{state.lives=3;state.used=[];state.player={x:0,y:5};newTarget()},1300)}}}
-  window.repeatHint = function(){document.getElementById('targetHint').textContent=worlds[state.activeWorld].hint;toast('Ingat: huruf dahulu, nombor kemudian.');sound(500,.1)}
+  window.startWorld = function(i){if(i>=state.unlocked){toast('Selesaikan zon keselamatan sebelumnya dahulu!');return}state.activeWorld=i;state.round=0;state.correct=0;state.lives=3;state.used=[];state.player={x:0,y:5};document.getElementById('worldTitle').textContent=worlds[i].name;document.getElementById('worldEyebrow').textContent=`ZON ${i+1} • MISI ${i+1}`;document.getElementById('worldDescription').textContent=worlds[i].desc;newTarget();showScreen('game')}
+  function newTarget(){state.target=randCell();while(same(state.target,state.player))state.target=randCell();state.obstacles=[];while(state.obstacles.length<5){let p=randCell();if(!same(p,state.target)&&!same(p,state.player)&&!state.obstacles.some(o=>same(o,p)))state.obstacles.push(p)}document.getElementById('missionText').textContent=['Jejak gajet Batman!','Rampas semula alatan Wayne Tech!','Kumpul reaktor tenaga!'][state.activeWorld];document.getElementById('targetCoord').textContent=coord(state.target);document.getElementById('targetHint').textContent='Cari sasaran pada radar.';document.getElementById('feedback').textContent='Pilih petak yang sepadan dengan koordinat Batcomputer.';document.getElementById('progressFill').style.width=(state.round/5*100)+'%';document.getElementById('progressText').textContent=`${state.round} / 5 sasaran`;renderGrid();updateGameStats()}
+  function renderGrid(){const grid=document.getElementById('grid');grid.replaceChildren();for(let y=0;y<6;y++){for(let x=0;x<6;x++){let p={x,y},b=document.createElement('button');b.className='g1-cell pickable';b.setAttribute('aria-label',coord(p));if(same(p,state.target)){b.classList.add('target');b.textContent=worlds[state.activeWorld].items[state.round%5]}else if(state.obstacles.some(o=>same(o,p))){b.classList.add('obstacle');b.textContent=worlds[state.activeWorld].obstacle}else if(same(p,state.player)){b.classList.add('player');b.textContent='🦇'}else if(state.used.some(o=>same(o,p))){b.classList.add('visited');b.textContent='·'}b.addEventListener('click',()=>pickCell(p));grid.appendChild(b)}}}
+  function pickCell(p){if(!state.target)return;if(same(p,state.target)){state.correct++;state.correctTotal++;state.score+=10;state.round++;state.player={...p};document.getElementById('feedback').textContent='🎉 Tepat! Batman berjaya menemui sasaran dan mendapat 10 mata!';document.getElementById('feedback').style.borderColor='var(--bat-green)';sound(660,.12);setTimeout(()=>sound(880,.2),100);save();updateGameStats();renderGrid();document.getElementById('progressFill').style.width=(state.round/5*100)+'%';document.getElementById('progressText').textContent=`${state.round} / 5 sasaran`;if(state.round>=5){setTimeout(finishWorld,500)}else{state.used.push({...p});setTimeout(newTarget,650)}}else{state.lives--;state.used.push({...p});document.getElementById('feedback').textContent=state.obstacles.some(o=>same(o,p))?'💥 Amaran! Awas bom perangkap di situ. Semak koordinat sasaran.':'Koordinat tersasar! Semak paksi lajur dan baris sekali lagi.';document.getElementById('feedback').style.borderColor='var(--bat-red)';sound(210,.22,'sawtooth',.035);updateGameStats();renderGrid();if(state.lives<=0){document.getElementById('feedback').textContent='Perisai Batman kehabisan! Bertenang — cuba semula dan baca koordinat radar dengan teliti.';setTimeout(()=>{state.lives=3;state.used=[];state.player={x:0,y:5};newTarget()},1300)}}}
+  window.repeatHint = function(){document.getElementById('targetHint').textContent=worlds[state.activeWorld].hint;toast('Petunjuk: huruf paksi mendatar dahulu, nombor kemudian.');sound(500,.1)}
   function updateGameStats(){document.getElementById('gameScore').textContent=state.score;document.getElementById('lives').textContent='❤️'.repeat(Math.max(0,state.lives));document.getElementById('correctCount').textContent=state.correct}
-  window.resetWorld = function(){if(confirm('Mula semula misi ini? Skor yang telah dikumpul akan dikekalkan.')){state.round=0;state.correct=0;state.lives=3;state.used=[];state.player={x:0,y:5};newTarget()}}
-  function finishWorld(){let i=state.activeWorld;if(!state.completed.includes(i))state.completed.push(i);state.unlocked=Math.max(state.unlocked,Math.min(3,i+2));const badge=['Penjaga Hutan','Pemburu Harta','Wira Angkasa'][i];if(!state.badges.includes(badge))state.badges.push(badge);save();document.getElementById('victoryTitle').textContent=`Syabas, ${worlds[i].name} selesai!`;document.getElementById('missionScore').textContent=state.correct*10;document.getElementById('missionCorrect').textContent=`${state.correct}/5`;document.getElementById('missionBadge').textContent='🏅';document.getElementById('continueBtn').textContent=i<2?'Teruskan ke Dunia Seterusnya →':'Raikan Kemenangan! 🎉';showScreen('victory');sound(523,.18);setTimeout(()=>sound(659,.18),140);setTimeout(()=>sound(784,.28),280)}
+  window.resetWorld = function(){if(confirm('Mula semula misi zon ini? Skor yang dikumpul akan kekal.')){state.round=0;state.correct=0;state.lives=3;state.used=[];state.player={x:0,y:5};newTarget()}}
+  function finishWorld(){let i=state.activeWorld;if(!state.completed.includes(i))state.completed.push(i);state.unlocked=Math.max(state.unlocked,Math.min(3,i+2));const badge=['Wira Gotham','Master Batcave','Wira Watchtower'][i];if(!state.badges.includes(badge))state.badges.push(badge);save();document.getElementById('victoryTitle').textContent=`Syabas, ${worlds[i].name} Selamat!`;document.getElementById('missionScore').textContent=state.correct*10;document.getElementById('missionCorrect').textContent=`${state.correct}/5`;document.getElementById('missionBadge').textContent='🏅';document.getElementById('continueBtn').textContent=i<2?'Teruskan ke Misi Seterusnya →':'Raikan Kemenangan Batman! 🎉';showScreen('victory');sound(523,.18);setTimeout(()=>sound(659,.18),140);setTimeout(()=>sound(784,.28),280)}
   window.continueAfterWin = function(){if(state.activeWorld<2&&state.unlocked>state.activeWorld+1)startWorld(state.activeWorld+1);else showScreen('map')}
-  function updateMap(){document.getElementById('mapScore').textContent=state.score+' mata';document.getElementById('mapMissions').textContent=state.completed.length+' daripada 3';document.getElementById('mapBadges').textContent=state.badges.length?state.badges.length+' diperoleh':'Belum diperoleh';for(let i=0;i<3;i++){let card=document.getElementById('worldCard'+i),badge=document.getElementById('badge'+i),btn=document.getElementById('worldBtn'+i);if(i===0){card.classList.remove('locked');continue}if(i<state.unlocked){card.classList.remove('locked');badge.textContent=state.completed.includes(i)?'✅ SELESAI':'🌟 TERBUKA';btn.textContent=state.completed.includes(i)?'Main Semula ↻':'Mulakan Misi →'}else{card.classList.add('locked');badge.textContent='🔒 DIKUNCI';btn.textContent=`Selesaikan Dunia ${i} dahulu`}}}
-  function updateAchievements(){document.getElementById('achScore').textContent=state.score;document.getElementById('achWorlds').textContent=state.completed.length+'/3';document.getElementById('achCorrect').textContent=state.correctTotal;const box=document.getElementById('badgeCollection');box.replaceChildren();const all=['Penjaga Hutan','Pemburu Harta','Wira Angkasa'];all.forEach((b,i)=>{let d=document.createElement('div');d.className='g1-badge-trophy';d.textContent=(state.badges.includes(b)?'🏅 ':'🔒 ')+b;box.appendChild(d)})}
-  window.resetProgress = function(){if(confirm('Padam semua skor, lencana dan kemajuan?')){state.score=0;state.correctTotal=0;state.unlocked=1;state.completed=[];state.badges=[];save();updateAchievements();updateMap();toast('Kemajuan telah dipadam.');}}
+  function updateMap(){document.getElementById('mapScore').textContent=state.score+' mata';document.getElementById('mapMissions').textContent=state.completed.length+' daripada 3';document.getElementById('mapBadges').textContent=state.badges.length?state.badges.length+' diperoleh':'Belum diperoleh';for(let i=0;i<3;i++){let card=document.getElementById('worldCard'+i),badge=document.getElementById('badge'+i),btn=document.getElementById('worldBtn'+i);if(i===0){card.classList.remove('locked');continue}if(i<state.unlocked){card.classList.remove('locked');badge.textContent=state.completed.includes(i)?'✅ SELESAI':'🌟 ZON TERBUKA';btn.textContent=state.completed.includes(i)?'Main Semula ↻':'Mulakan Misi →'}else{card.classList.add('locked');badge.textContent='🔒 DIKUNCI';btn.textContent=`Selesaikan Zon ${i} dahulu`}}}
+  function updateAchievements(){document.getElementById('achScore').textContent=state.score;document.getElementById('achWorlds').textContent=state.completed.length+'/3';document.getElementById('achCorrect').textContent=state.correctTotal;const box=document.getElementById('badgeCollection');box.replaceChildren();const all=['Wira Gotham','Master Batcave','Wira Watchtower'];all.forEach((b,i)=>{let d=document.createElement('div');d.className='g1-badge-trophy';d.textContent=(state.badges.includes(b)?'🏅 ':'🔒 ')+b;box.appendChild(d)})}
+  window.resetProgress = function(){if(confirm('Padam semua rekod, skor dan lencana Batman?')){state.score=0;state.correctTotal=0;state.unlocked=1;state.completed=[];state.badges=[];save();updateAchievements();updateMap();toast('Rekod Batcomputer telah dipadam.');}}
   updateMap();updateAchievements();
 })();
 
-/* LOGIK PERMAINAN 2 */
+/* GAME 2 LOGIC (MISI LANUN) */
 (function(){
   const missions2=[
    {name:"Cari Pulau Harta Karun",target:[5,3],start:[0,0],obstacles:[[4,2,"🪨"],[4,4,"🪨"],[2,3,"🌀"],[7,1,"🌀"],[6,4,"🏴‍☠️"]],hint:"Dari titik mula, bergerak ke kanan dan ke atas. Rancang laluan yang tidak menyentuh halangan."},
