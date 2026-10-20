@@ -6,14 +6,14 @@
 <title>Misi Koordinat: Batman Superhero Edition</title>
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;width:100%;min-height:100vh;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#05070c;color:#e1e7ed;overflow-x:hidden}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh;background:#05070c;color:#e1e7ed}
 button{font:inherit;cursor:pointer;border:0;transition:transform .15s,filter .15s}
 button:hover{transform:translateY(-2px);filter:brightness(1.1)}
 
 /* TOP SWITCHER BAR */
 .top-nav {
   background: #000000;
-  padding: 12px 24px;
+  padding: 12px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,17 +22,16 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
   top: 0;
   z-index: 99999;
   border-bottom: 2px solid #ffd70033;
-  width: 100%;
 }
 .top-nav span { color: #fff; font-weight: 800; font-size: 14px; }
 .nav-btn {
   background: #121926;
   color: #8fa3bf;
   border: 2px solid #23324a;
-  padding: 10px 22px;
+  padding: 8px 18px;
   border-radius: 20px;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
 }
 .nav-btn.active {
@@ -42,11 +41,11 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
 }
 
-.game-sec { display: none; width: 100%; }
+.game-sec { display: none; }
 .game-sec.active { display: block; }
 
 /* =========================================================
-   PERMAINAN 1: BATMAN SUPERHERO THEME (FULLSCREEN)
+   PERMAINAN 1: BATMAN SUPERHERO THEME
    ========================================================= */
 #game1-root {
   --bat-black:#0a0e17;
@@ -59,123 +58,111 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
   color:#e1e7ed;
   background: radial-gradient(circle at 50% 10%, #151f32 0%, #080c14 70%);
   min-height: calc(100vh - 56px);
-  padding: 24px;
-  width: 100%;
+  padding-bottom: 30px;
 }
-.g1-app{max-width:100%;margin:auto;padding:0 12px}
-.g1-topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;width:100%}
-.g1-brand{font-weight:950;letter-spacing:.5px;font-size:clamp(18px,3vw,26px);color:var(--bat-yellow)}
-.g1-brand span{display:inline-grid;place-items:center;background:var(--bat-yellow);color:#000;border-radius:12px;padding:8px 12px;margin-right:8px;box-shadow:0 0 10px rgba(255, 215, 0, 0.4)}
-.g1-top-actions{display:flex;gap:10px;flex-wrap:wrap}
-.g1-pill{border:2px solid var(--bat-border);background:#121926cc;border-radius:999px;padding:10px 18px;font-weight:800;color:#c0d1e5;font-size:14px}
-.g1-screen{display:none;animation:g1-enter .25s ease;width:100%}
+.g1-app{max-width:1120px;margin:auto;padding:18px}
+.g1-topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
+.g1-brand{font-weight:950;letter-spacing:.5px;font-size:clamp(16px,3vw,22px);color:var(--bat-yellow)}
+.g1-brand span{display:inline-grid;place-items:center;background:var(--bat-yellow);color:#000;border-radius:12px;padding:7px;margin-right:7px;box-shadow:0 0 10px rgba(255, 215, 0, 0.4)}
+.g1-top-actions{display:flex;gap:8px;flex-wrap:wrap}
+.g1-pill{border:2px solid var(--bat-border);background:#121926cc;border-radius:999px;padding:9px 15px;font-weight:800;color:#c0d1e5}
+.g1-screen{display:none;animation:g1-enter .25s ease}
 .g1-screen.active{display:block}
 @keyframes g1-enter{from{opacity:.2;transform:translateY(7px)}to{opacity:1;transform:none}}
-.g1-panel{background:var(--bat-panel);border:2px solid var(--bat-border);border-radius:25px;padding:clamp(20px,3.5vw,40px);box-shadow:0 16px 35px rgba(0,0,0,0.6);width:100%}
-.g1-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;min-height:500px;overflow:hidden;position:relative}
-.g1-eyebrow{display:inline-block;background:#281e00;color:var(--bat-yellow);padding:8px 16px;border:1px solid #7a6300;border-radius:999px;font-size:14px;font-weight:900;letter-spacing:.7px}
-.g1-hero h1{font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-1px;margin:20px 0 16px;color:#ffffff}
+.g1-panel{background:var(--bat-panel);border:2px solid var(--bat-border);border-radius:25px;padding:clamp(18px,3vw,30px);box-shadow:0 16px 35px rgba(0,0,0,0.6)}
+.g1-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;min-height:490px;overflow:hidden;position:relative}
+.g1-eyebrow{display:inline-block;background:#281e00;color:var(--bat-yellow);padding:7px 14px;border:1px solid #7a6300;border-radius:999px;font-size:13px;font-weight:900;letter-spacing:.7px}
+.g1-hero h1{font-size:clamp(36px,6vw,65px);line-height:.98;letter-spacing:-1px;margin:17px 0 14px;color:#ffffff}
 .g1-hero h1 em{font-style:normal;color:var(--bat-yellow);text-shadow:0 0 15px rgba(255,215,0,0.3)}
-.g1-panel h2{margin:0 0 12px;font-size:clamp(28px,4vw,40px);color:#ffffff}
-.g1-lead{font-size:18px;line-height:1.65;color:#9cb0c9;max-width:700px}
-.g1-btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.g1-btn{border-radius:14px;padding:14px 24px;font-weight:900;font-size:15px;box-shadow:0 5px 0 #000000}
+.g1-panel h2{margin:0 0 10px;font-size:clamp(25px,4vw,36px);color:#ffffff}
+.g1-lead{font-size:17px;line-height:1.65;color:#9cb0c9;max-width:560px}
+.g1-btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}
+.g1-btn{border-radius:14px;padding:13px 20px;font-weight:900;box-shadow:0 5px 0 #000000}
 .g1-btn.primary{background:var(--bat-yellow);color:#000}
 .g1-btn.secondary{background:#1d293d;color:#7ec2ff;border:1px solid #354b6e}
 .g1-btn.gold{background:#2a2100;color:var(--bat-yellow);border:1px solid #826800}
-.g1-btn.cyan{background:#003a52;color:#4ad2ff;border:1px solid #007bb0}
-.g1-art{min-height:360px;display:grid;place-items:center;position:relative}
-.g1-island{width:min(100%,420px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle, #25334c 0%, #0a0e17 80%);border:4px solid var(--bat-yellow);box-shadow:0 0 25px rgba(255,215,0,0.25);position:relative;display:flex;align-items:center;justify-content:center}
-.g1-bat-signal{font-size:clamp(110px,16vw,170px);filter:drop-shadow(0 0 20px var(--bat-yellow));animation:g1-pulse 2.5s ease-in-out infinite}
+.g1-art{min-height:340px;display:grid;place-items:center;position:relative}
+.g1-island{width:min(100%,380px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle, #25334c 0%, #0a0e17 80%);border:4px solid var(--bat-yellow);box-shadow:0 0 25px rgba(255,215,0,0.25);position:relative;display:flex;align-items:center;justify-content:center}
+.g1-bat-signal{font-size:clamp(100px,15vw,150px);filter:drop-shadow(0 0 20px var(--bat-yellow));animation:g1-pulse 2.5s ease-in-out infinite}
 @keyframes g1-pulse{0%,100%{transform:scale(1);opacity:0.9}50%{transform:scale(1.08);opacity:1}}
-.g1-feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;width:100%}
-.g1-feature{padding:20px;border-radius:18px;background:#151c2a;border:1px solid var(--bat-border)}
-.g1-feature b{display:block;margin:6px 0;color:var(--bat-yellow);font-size:16px}.g1-feature span{font-size:14px;color:#8ba2c0;line-height:1.4}
-.g1-section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin-bottom:24px}
+.g1-feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.g1-feature{padding:17px;border-radius:18px;background:#151c2a;border:1px solid var(--bat-border)}
+.g1-feature b{display:block;margin:6px 0;color:var(--bat-yellow)}.g1-feature span{font-size:13px;color:#8ba2c0;line-height:1.4}
+.g1-section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin-bottom:20px}
 .g1-muted{color:#8ba2c0;line-height:1.55}
-.g1-worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%}
-.g1-world-card{border-radius:22px;padding:24px;border:2px solid var(--bat-border);min-height:260px;display:flex;flex-direction:column;align-items:flex-start;background:#151d2b;box-shadow:0 9px 20px rgba(0,0,0,0.4)}
+.g1-worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.g1-world-card{border-radius:22px;padding:20px;border:2px solid var(--bat-border);min-height:225px;display:flex;flex-direction:column;align-items:flex-start;background:#151d2b;box-shadow:0 9px 20px rgba(0,0,0,0.4)}
 .g1-world-card.forest{border-color:#34c75955}
 .g1-world-card.treasure-world{border-color:#ffd70055}
 .g1-world-card.space{border-color:#1ea7fd55}
-.g1-world-icon{font-size:52px;margin-bottom:12px}
-.g1-world-card p{color:#8ba2c0;font-size:15px;line-height:1.45;flex:1}
-.g1-world-card button{width:100%;padding:12px;border-radius:12px;background:var(--bat-yellow);color:#000;font-weight:900;font-size:15px}
+.g1-world-icon{font-size:48px;margin-bottom:10px}
+.g1-world-card p{color:#8ba2c0;font-size:14px;line-height:1.45;flex:1}
+.g1-world-card button{width:100%;padding:11px;border-radius:12px;background:var(--bat-yellow);color:#000;font-weight:900}
 .g1-world-card.locked{filter:grayscale(.85);opacity:.5}
-.g1-badge{display:inline-block;padding:6px 12px;background:#222f45;border-radius:999px;font-size:12px;font-weight:900;margin-bottom:10px;color:var(--bat-yellow)}
-.g1-game-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,.7fr);gap:24px;width:100%}
-.g1-game-board{background:#0e131d;border:2px solid var(--bat-border);border-radius:18px;padding:20px}
-.g1-col-labels{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:0 0 8px 32px;text-align:center;font-weight:950;color:var(--bat-yellow);font-size:18px}
-.g1-board-line{display:grid;grid-template-columns:28px 1fr;gap:6px}
-.g1-row-labels{display:grid;grid-template-rows:repeat(6,1fr);gap:6px;text-align:center;font-weight:950;color:var(--bat-yellow);font-size:18px}
+.g1-badge{display:inline-block;padding:5px 9px;background:#222f45;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:9px;color:var(--bat-yellow)}
+.g1-game-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:18px}
+.g1-game-board{background:#0e131d;border:2px solid var(--bat-border);border-radius:18px;padding:15px}
+.g1-col-labels{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:0 0 5px 27px;text-align:center;font-weight:950;color:var(--bat-yellow)}
+.g1-board-line{display:grid;grid-template-columns:23px 1fr;gap:4px}
+.g1-row-labels{display:grid;grid-template-rows:repeat(6,1fr);gap:4px;text-align:center;font-weight:950;color:var(--bat-yellow)}
 .g1-row-labels span{display:grid;place-items:center}
-.g1-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
-.g1-cell{aspect-ratio:1;border-radius:10px;border:2px solid #233047;background:#151d2b;display:grid;place-items:center;font-size:clamp(20px,4.5vw,38px);min-width:0;color:#fff}
+.g1-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.g1-cell{aspect-ratio:1;border-radius:8px;border:2px solid #233047;background:#151d2b;display:grid;place-items:center;font-size:clamp(17px,3.8vw,30px);min-width:0;color:#fff}
 .g1-cell.pickable:hover{background:#1e2b40;border-color:var(--bat-yellow)}
 .g1-cell.target{background:#3b3100;border-color:var(--bat-yellow)}
 .g1-cell.player{background:#0c3822;border-color:var(--bat-green)}
 .g1-cell.obstacle{background:#3a1114;border-color:var(--bat-red)}
 .g1-cell.visited{background:#192336;color:#526b94}
 .g1-cell:disabled{cursor:default}
-.g1-side-panel{display:flex;flex-direction:column;gap:16px}
-.g1-mission-box{background:#182030;border:2px solid var(--bat-border);border-radius:17px;padding:20px}
-.g1-mission-title{font-weight:950;color:var(--bat-yellow);font-size:14px;text-transform:uppercase;letter-spacing:.7px}
-.g1-target-big{font-size:42px;font-weight:1000;color:#ffffff;margin:8px 0;text-shadow:0 0 10px rgba(255,255,255,0.2)}
-.g1-progressline{height:10px;border-radius:999px;background:#0c1017;overflow:hidden;margin-top:12px}
+.g1-side-panel{display:flex;flex-direction:column;gap:12px}
+.g1-mission-box{background:#182030;border:2px solid var(--bat-border);border-radius:17px;padding:17px}
+.g1-mission-title{font-weight:950;color:var(--bat-yellow);font-size:13px;text-transform:uppercase;letter-spacing:.7px}
+.g1-target-big{font-size:35px;font-weight:1000;color:#ffffff;margin:6px 0;text-shadow:0 0 10px rgba(255,255,255,0.2)}
+.g1-progressline{height:9px;border-radius:999px;background:#0c1017;overflow:hidden;margin-top:10px}
 .g1-progressline div{height:100%;background:linear-gradient(90deg,var(--bat-yellow),var(--bat-blue));width:0;transition:width .25s}
-.g1-feedback{min-height:60px;border-radius:13px;background:#131a26;border:1px solid var(--bat-border);padding:14px;font-weight:750;line-height:1.4;color:#d5e2f2;font-size:15px}
-.g1-controls{display:flex;gap:10px;flex-wrap:wrap}
-.g1-controls .g1-btn{flex:1;padding:12px 14px}
-.g1-small{font-size:13px;color:#7e95b3}
+.g1-feedback{min-height:50px;border-radius:13px;background:#131a26;border:1px solid var(--bat-border);padding:12px;font-weight:750;line-height:1.4;color:#d5e2f2}
+.g1-controls{display:flex;gap:8px;flex-wrap:wrap}
+.g1-controls .g1-btn{flex:1;padding:11px 12px}
+.g1-small{font-size:12px;color:#7e95b3}
 .g1-center{text-align:center}
-.g1-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
-.g1-stat-card{padding:20px;border-radius:18px;background:#151d2b;border:1px solid var(--bat-border);text-align:center}
-.g1-stat-card strong{display:block;font-size:32px;color:var(--bat-yellow)}
-.g1-badges{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:20px 0}
-.g1-badge-trophy{padding:16px 20px;border-radius:16px;background:#241d00;border:2px solid #856a00;color:var(--bat-yellow);font-weight:850;font-size:16px}
-.g1-instructions{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.g1-step{background:#151d2b;border:1px solid var(--bat-border);border-radius:16px;padding:20px}
-.g1-step .num{width:36px;height:36px;border-radius:10px;background:#233047;color:var(--bat-yellow);display:grid;place-items:center;font-weight:950;margin-bottom:10px;font-size:18px}
-.g1-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--bat-yellow);color:#000;padding:14px 26px;border-radius:999px;font-weight:900;box-shadow:0 8px 25px rgba(255,215,0,0.4);display:none;z-index:999}
-.g1-footer{text-align:center;color:#60738c;font-size:13px;padding:24px 5px}
+.g1-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.g1-stat-card{padding:18px;border-radius:18px;background:#151d2b;border:1px solid var(--bat-border);text-align:center}
+.g1-stat-card strong{display:block;font-size:30px;color:var(--bat-yellow)}
+.g1-badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:20px 0}
+.g1-badge-trophy{padding:14px;border-radius:16px;background:#241d00;border:2px solid #856a00;color:var(--bat-yellow);font-weight:850}
+.g1-instructions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.g1-step{background:#151d2b;border:1px solid var(--bat-border);border-radius:16px;padding:17px}
+.g1-step .num{width:32px;height:32px;border-radius:10px;background:#233047;color:var(--bat-yellow);display:grid;place-items:center;font-weight:950;margin-bottom:9px}
+.g1-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--bat-yellow);color:#000;padding:12px 22px;border-radius:999px;font-weight:900;box-shadow:0 8px 25px rgba(255,215,0,0.4);display:none;z-index:999}
+.g1-footer{text-align:center;color:#60738c;font-size:12px;padding:22px 5px}
 
-/* MOD BELAJAR (LEARNING PAGE) */
-.learn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
-.learn-card { background: #151d2b; border: 2px solid var(--bat-border); border-radius: 18px; padding: 24px; }
-.learn-card h3 { color: var(--bat-yellow); margin-top: 0; font-size: 22px; display: flex; align-items: center; gap: 10px; }
-.learn-demo-box { background: #0c1017; border: 1px dashed var(--bat-blue); border-radius: 14px; padding: 20px; text-align: center; margin: 16px 0; }
-.learn-axis-demo { display: inline-grid; grid-template-columns: repeat(4, 50px); gap: 6px; margin: 10px auto; }
-.learn-cell { width: 50px; height: 50px; background: #1e2b40; border: 1px solid #364d73; border-radius: 6px; display: grid; place-items: center; font-weight: 800; color: #fff; cursor: pointer; }
-.learn-cell.active-demo { background: var(--bat-yellow); color: #000; box-shadow: 0 0 10px var(--bat-yellow); }
-
-/* PERMAINAN 2 STYLES (FULLSCREEN) */
+/* PERMAINAN 2 STYLES */
 #game2-root {
   background:linear-gradient(180deg,#45c9f5 0%,#0788c8 52%,#045b8d 100%);
   min-height: calc(100vh - 56px);
   color:#fff;
-  padding: 24px;
-  width: 100%;
+  padding-bottom: 20px;
 }
-.g2-top{max-width:100%;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:center;gap:14px;position:relative}
+.g2-top{max-width:1450px;margin:0 auto;padding:18px 18px 8px;display:flex;align-items:center;justify-content:center;gap:14px;position:relative}
 .g2-flag{font-size:46px;filter:drop-shadow(0 3px 2px #06405b)}
-.g2-title{margin:0;text-align:center;text-transform:uppercase;font-size:clamp(28px,4vw,48px);line-height:1.05;text-shadow:0 4px 0 #6a3512,0 7px 8px #00304a;letter-spacing:1px;color:#fff}
+.g2-title{margin:0;text-align:center;text-transform:uppercase;font-size:clamp(25px,3.5vw,43px);line-height:1.05;text-shadow:0 4px 0 #6a3512,0 7px 8px #00304a;letter-spacing:1px;color:#fff}
 .g2-title span{display:block;color:#ffdf35;font-size:.75em;margin-top:7px}
-.g2-subtitle{text-align:center;margin:12px auto 20px;font-weight:800;color:#073b5b;background:#ffe8a6;border:3px solid #b7792e;border-radius:15px;padding:10px 24px;width:fit-content;max-width:92%;box-shadow:0 4px 0 #8e5b25;font-size:16px}
-.g2-layout{max-width:100%;margin:auto;padding:0 12px 20px;display:grid;grid-template-columns:260px minmax(400px,1fr) 280px;gap:20px;align-items:stretch}
-.g2-panel{background:linear-gradient(145deg,#0a3a58,#052a43);border:4px solid #0a567c;border-radius:19px;box-shadow:0 7px 0 #03466c, inset 0 0 0 2px #287ca0;padding:16px}
-.g2-card{background:#fff0c4;color:#4c2c13;border:4px solid #9c622c;border-radius:14px;padding:16px;box-shadow:inset 0 0 0 2px #e8b65b}
+.g2-subtitle{text-align:center;margin:8px auto 16px;font-weight:800;color:#073b5b;background:#ffe8a6;border:3px solid #b7792e;border-radius:15px;padding:9px 18px;width:fit-content;max-width:92%;box-shadow:0 4px 0 #8e5b25}
+.g2-layout{max-width:1450px;margin:auto;padding:0 16px 20px;display:grid;grid-template-columns:220px minmax(400px,1fr) 255px;gap:14px;align-items:stretch}
+.g2-panel{background:linear-gradient(145deg,#0a3a58,#052a43);border:4px solid #0a567c;border-radius:19px;box-shadow:0 7px 0 #03466c, inset 0 0 0 2px #287ca0;padding:12px}
+.g2-card{background:#fff0c4;color:#4c2c13;border:4px solid #9c622c;border-radius:14px;padding:12px;box-shadow:inset 0 0 0 2px #e8b65b}
 .g2-label{color:#ffda37;font-weight:1000;text-transform:uppercase;text-align:center;font-size:18px;margin:2px 0 8px}
-.g2-stat{border-bottom:2px solid #28617d;padding:12px 0;text-align:center}.g2-stat:last-child{border:0}.g2-big{font-size:32px;font-weight:1000}
-.g2-level{display:inline-block;background:#8b4de0;color:white;border-radius:10px;padding:4px 16px;font-size:26px;box-shadow:0 4px #52269a}
-.g2-hearts{font-size:28px;letter-spacing:3px}.g2-how{font-size:14px;line-height:1.5}.g2-how b{color:#ffdb40}
-.g2-map-wrap{min-width:0;position:relative;background:linear-gradient(180deg,#068cc5,#00649b);border:5px solid #075681;border-radius:22px;padding:14px;box-shadow:0 9px 0 #03496c}
-.g2-map-top{display:flex;justify-content:space-between;align-items:center;padding:0 8px 12px;font-weight:900;color:white;font-size:16px}
-.g2-badge{background:#064365;border:2px solid #32b9e7;border-radius:20px;padding:6px 14px;font-size:13px}
-.g2-grid-shell{display:grid;grid-template-columns:36px 1fr;grid-template-rows:32px 1fr;gap:0;max-width:100%;aspect-ratio:1/0.78;margin:auto}
-.g2-x-labels{grid-column:2;display:grid;grid-template-columns:repeat(9,1fr);align-items:center;text-align:center;font-weight:900;font-size:18px}
-.g2-y-labels{grid-row:2;display:grid;grid-template-rows:repeat(6,1fr);align-items:center;text-align:center;font-weight:900;font-size:18px}
+.g2-stat{border-bottom:2px solid #28617d;padding:10px 0;text-align:center}.g2-stat:last-child{border:0}.g2-big{font-size:28px;font-weight:1000}
+.g2-level{display:inline-block;background:#8b4de0;color:white;border-radius:10px;padding:4px 13px;font-size:24px;box-shadow:0 4px #52269a}
+.g2-hearts{font-size:25px;letter-spacing:3px}.g2-how{font-size:13px;line-height:1.5}.g2-how b{color:#ffdb40}
+.g2-map-wrap{min-width:0;position:relative;background:linear-gradient(180deg,#068cc5,#00649b);border:5px solid #075681;border-radius:22px;padding:10px;box-shadow:0 9px 0 #03496c}
+.g2-map-top{display:flex;justify-content:space-between;align-items:center;padding:0 8px 9px;font-weight:900;color:white}
+.g2-badge{background:#064365;border:2px solid #32b9e7;border-radius:20px;padding:4px 10px;font-size:12px}
+.g2-grid-shell{display:grid;grid-template-columns:32px 1fr;grid-template-rows:27px 1fr;gap:0;max-width:100%;aspect-ratio:1/0.82;margin:auto}
+.g2-x-labels{grid-column:2;display:grid;grid-template-columns:repeat(9,1fr);align-items:center;text-align:center;font-weight:900;font-size:15px}
+.g2-y-labels{grid-row:2;display:grid;grid-template-rows:repeat(6,1fr);align-items:center;text-align:center;font-weight:900}
 .g2-ocean-grid{grid-row:2;grid-column:2;display:grid;grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(6,1fr);border:3px solid #9de7ff;border-radius:7px;overflow:hidden;background:linear-gradient(135deg,rgba(42,203,245,.7),rgba(0,129,203,.8));position:relative}
-.g2-cell{position:relative;min-width:0;min-height:0;border:1px solid rgba(222,249,255,.45);background:rgba(40,190,232,.22);color:white;font-size:clamp(18px,2.5vw,34px);display:flex;align-items:center;justify-content:center;transition:background .15s,transform .15s}
+.g2-cell{position:relative;min-width:0;min-height:0;border:1px solid rgba(222,249,255,.45);background:rgba(40,190,232,.22);color:white;font-size:clamp(16px,2.2vw,30px);display:flex;align-items:center;justify-content:center;transition:background .15s,transform .15s}
 .g2-cell:hover:not(:disabled){background:rgba(255,218,55,.35);box-shadow:inset 0 0 0 3px #ffdb38}
 .g2-cell:disabled{cursor:default}
 .g2-cell.obstacle{background:rgba(2,58,88,.35)}
@@ -183,31 +170,25 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
 .g2-cell.current{background:#ffe36b;box-shadow:inset 0 0 0 3px #a45e08}
 .g2-cell.current::after{content:"";position:absolute;inset:4px;border:2px dashed #9a4e0a;border-radius:50%}
 .g2-cell.goal{background:rgba(51,220,100,.35)}
-.g2-cell .coord{position:absolute;bottom:3px;right:4px;font-size:10px;opacity:.75;font-weight:800}
+.g2-cell .coord{position:absolute;bottom:2px;right:3px;font-size:9px;opacity:.7;font-weight:800}
 .g2-ship-icon,.g2-obj-icon{filter:drop-shadow(0 2px 1px #00374d);z-index:1}
-.g2-route{font-size:12px;position:absolute;top:2px;left:4px;color:#ffed90;font-weight:1000}
-.g2-right .g2-card{margin-bottom:14px}
-.g2-mission-coord{font-size:44px;text-align:center;color:#0786c7;font-weight:1000;margin:6px 0}
-.g2-mission-name{text-align:center;font-weight:900;font-size:16px}
-.g2-instruction{text-align:center;font-size:14px;line-height:1.4}
-.g2-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:210px;margin:12px auto}
-.g2-arrow{background:linear-gradient(#ffdf42,#f4a400);color:#633500;border:2px solid #b16b00;border-radius:50%;height:52px;font-size:24px;font-weight:1000;box-shadow:0 3px #8e4b00}
+.g2-route{font-size:10px;position:absolute;top:2px;left:3px;color:#ffed90;font-weight:1000}
+.g2-right .g2-card{margin-bottom:12px}
+.g2-mission-coord{font-size:38px;text-align:center;color:#0786c7;font-weight:1000;margin:4px 0}
+.g2-mission-name{text-align:center;font-weight:900;font-size:15px}
+.g2-instruction{text-align:center;font-size:13px;line-height:1.4}
+.g2-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;max-width:190px;margin:10px auto}
+.g2-arrow{background:linear-gradient(#ffdf42,#f4a400);color:#633500;border:2px solid #b16b00;border-radius:50%;height:47px;font-size:22px;font-weight:1000;box-shadow:0 3px #8e4b00}
 .g2-arrow:active{transform:translateY(2px);box-shadow:0 1px #8e4b00}
 .g2-arrow.up{grid-column:2}.g2-arrow.left{grid-column:1;grid-row:2}.g2-arrow.center{grid-column:2;grid-row:2;background:#925b22;color:#ffe4a0}.g2-arrow.righta{grid-column:3;grid-row:2}.g2-arrow.down{grid-column:2;grid-row:3}
-.g2-action{width:100%;border-radius:12px;padding:12px 10px;margin-top:8px;font-weight:1000;color:#fff;box-shadow:0 4px rgba(0,0,0,.25);border:2px solid rgba(255,255,255,.35);font-size:14px}
+.g2-action{width:100%;border-radius:12px;padding:10px 8px;margin-top:7px;font-weight:1000;color:#fff;box-shadow:0 4px rgba(0,0,0,.25);border:2px solid rgba(255,255,255,.35)}
 .g2-red{background:linear-gradient(#ff6b50,#d52b1e)}.g2-green{background:linear-gradient(#47df7e,#11994d)}.g2-blue{background:linear-gradient(#34c8f5,#0878bd)}
-.g2-feedback{min-height:70px;background:#07334e;border:2px solid #28789c;border-radius:12px;padding:12px;margin-top:12px;font-size:14px;line-height:1.4;text-align:center}
-.g2-bottom{max-width:100%;margin:0 auto;padding:0 12px 24px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.g2-legend,.g2-progress{background:#073954;border:4px solid #0a567c;border-radius:17px;padding:14px}
-.g2-legend-items{display:flex;justify-content:space-around;gap:10px;flex-wrap:wrap;font-size:13px;text-align:center}.g2-legend-items span{display:block;font-size:26px}
-.g2-progress-track{display:flex;align-items:center;justify-content:space-between;gap:6px;margin:16px 4px 8px}.g2-dot{width:24px;height:24px;border-radius:50%;background:#9db3bf;border:3px solid white;display:grid;place-items:center;font-size:12px;color:#000}.g2-dot.done{background:#ffce28;border-color:#fff2b0}
-.g2-modal{position:fixed;inset:0;background:rgba(0,25,44,.78);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}.g2-modal.show{display:flex}.g2-modal-box{max-width:480px;width:100%;background:#fff0c4;color:#4c2c13;border:6px solid #9c622c;border-radius:22px;padding:28px;text-align:center;box-shadow:0 12px 0 #603915}.g2-modal-box h2{font-size:30px;margin:6px}.g2-modal-box .trophy{font-size:70px}
-@media(max-width:1024px){
- .learn-grid{grid-template-columns:1fr}
- .g1-hero{grid-template-columns:1fr}.g1-feature-row,.g1-worlds,.g1-instructions{grid-template-columns:1fr}
- .g1-game-layout{grid-template-columns:1fr}
- .g2-layout{grid-template-columns:1fr}
-}
+.g2-feedback{min-height:65px;background:#07334e;border:2px solid #28789c;border-radius:12px;padding:10px;margin-top:10px;font-size:13px;line-height:1.4;text-align:center}
+.g2-bottom{max-width:1450px;margin:0 auto;padding:0 16px 24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g2-legend,.g2-progress{background:#073954;border:4px solid #0a567c;border-radius:17px;padding:12px}
+.g2-legend-items{display:flex;justify-content:space-around;gap:8px;flex-wrap:wrap;font-size:12px;text-align:center}.g2-legend-items span{display:block;font-size:24px}
+.g2-progress-track{display:flex;align-items:center;justify-content:space-between;gap:4px;margin:15px 4px 8px}.g2-dot{width:20px;height:20px;border-radius:50%;background:#9db3bf;border:3px solid white}.g2-dot.done{background:#ffce28;border-color:#fff2b0}
+.g2-modal{position:fixed;inset:0;background:rgba(0,25,44,.78);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}.g2-modal.show{display:flex}.g2-modal-box{max-width:460px;width:100%;background:#fff0c4;color:#4c2c13;border:6px solid #9c622c;border-radius:22px;padding:24px;text-align:center;box-shadow:0 12px 0 #603915}.g2-modal-box h2{font-size:28px;margin:5px}.g2-modal-box .trophy{font-size:65px}
 </style>
 </head>
 <body>
@@ -224,13 +205,11 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
     <nav class="g1-topbar">
       <div class="g1-brand"><span>🦇</span>BAT-KOORDINAT</div>
       <div class="g1-top-actions">
-        <button class="g1-pill" onclick="showScreen('learn')">🎓 Mod Belajar (Panduan Asas)</button>
         <button class="g1-pill" id="musicToggle" aria-pressed="false">🎵 Audio Batcave: OFF</button>
         <button class="g1-pill" onclick="showScreen('achievements')">🏆 Pencapaian Wira</button>
       </div>
     </nav>
 
-    <!-- UTAMA (HOME) -->
     <section class="g1-screen active" id="home">
       <div class="g1-panel g1-hero">
         <div>
@@ -238,7 +217,6 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
           <h1>Misi Penyelamat <em>Gotham</em></h1>
           <p class="g1-lead">Isyarat Bat-Signal telah dinyalakan! Bantu Batman menjejak penjahat, menyelamatkan mangsa dan mengumpul gajet superhero menggunakan koordinat grid.</p>
           <div class="g1-btn-row">
-            <button class="g1-btn cyan" onclick="showScreen('learn')">🎓 BELAJAR KOORDINAT DAHULU</button>
             <button class="g1-btn primary" onclick="showScreen('map')">🦇 MULA MISI BATMAN</button>
             <button class="g1-btn secondary" onclick="showScreen('howto')">📖 CARA BERMAIN</button>
           </div>
@@ -250,59 +228,12 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
         </div>
       </div>
       <div class="g1-feature-row">
-        <div class="g1-feature">🎓 <b>Pusat Pembelajaran</b><span>Fahami paksi-x, paksi-y & cara baca koordinat sebelum bermula.</span></div>
         <div class="g1-feature">🧩 <b>Radar Batcomputer</b><span>Nyahkod koordinat pada grid radar untuk mencari sasaran.</span></div>
+        <div class="g1-feature">⭐ <b>Teknologi Wayne</b><span>Kumpul Batarang, Kristal Tenaga dan Lencana Superhero.</span></div>
         <div class="g1-feature">🌃 <b>3 Zon Bahaya</b><span>Bandar Gotham, Vault Batcave, dan Stesen Angkasa Watchtower.</span></div>
       </div>
     </section>
 
-    <!-- MOD BELAJAR (NEW LEARNING PAGE) -->
-    <section class="g1-screen" id="learn">
-      <div class="g1-panel">
-        <div class="g1-section-head">
-          <div>
-            <span class="g1-eyebrow">AKADEMI BATMAN</span>
-            <h2>🎓 Mod Belajar: Memahami Koordinat</h2>
-            <p class="g1-muted">Pelajari konsep dasar koordinat sebelum memulakan misi di Gotham!</p>
-          </div>
-          <button class="g1-btn secondary" onclick="showScreen('home')">← Kembali ke Utama</button>
-        </div>
-
-        <div class="learn-grid">
-          <!-- CARD 1 -->
-          <div class="learn-card">
-            <h3>1. Apakah Itu Koordinat? 🧭</h3>
-            <p class="g1-muted">Koordinat ialah pasangan nombor atau huruf yang menunjukkan **lokasi tepat** sesuatu objek di atas grid flat (satah).</p>
-            <div class="learn-demo-box">
-              <div style="font-size:28px;font-weight:900;color:var(--bat-yellow)">( Lajur , Baris )</div>
-              <p style="font-size:14px;color:#8ba2c0;margin-top:6px">Contoh: <b>(C, 4)</b> bermaksud **Lajur C**, **Baris 4**.</p>
-            </div>
-            <p class="g1-muted"><b>Aturan Emas Batman:</b> Sentiasa baca paksi melintang (**Kiri ke Kanan**) dahulu, baru baca paksi menegak (**Bawah ke Atas**)!</p>
-          </div>
-
-          <!-- CARD 2 -->
-          <div class="learn-card">
-            <h3>2. Latihan Interaktif Radar 🦇</h3>
-            <p class="g1-muted">Ketik mana-mana petak di bawah untuk melihat bagaimana koordinat dibentuk:</p>
-            <div class="learn-demo-box">
-              <div class="learn-axis-demo" id="learnDemoGrid"></div>
-              <div style="margin-top:10px;font-size:18px;font-weight:900;color:var(--bat-yellow)" id="demoReadout">Ketik petak untuk mencuba!</div>
-            </div>
-            <p class="g1-muted">Dua format umum yang digunakan:</p>
-            <ul>
-              <li><b>Format Huruf & Nombor:</b> (A, 1), (B, 3), (D, 6)</li>
-              <li><b>Format Paksi X & Y:</b> (1, 2), (5, 3), (8, 4)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="g1-btn-row" style="justify-content:center;margin-top:30px">
-          <button class="g1-btn primary" onclick="showScreen('map')">👍 Saya Dah Faham, Mula Main Sekarang! →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- CARA BERMAIN -->
     <section class="g1-screen" id="howto">
       <div class="g1-panel">
         <div class="g1-section-head"><div><span class="g1-eyebrow">PANDUAN SUPERHERO</span><h2>Cara Bermain</h2><p class="g1-muted">Ingat arahan Batman: koordinat sentiasa ditulis sebagai (Lajur Huruf, Baris Nombor).</p></div><button class="g1-btn secondary" onclick="showScreen('home')">← Kembali</button></div>
@@ -311,16 +242,15 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
           <div class="g1-step"><div class="num">2</div><h3>🔎 Jejak Koordinat</h3><p class="g1-muted">Baca koordinat sasaran. Huruf = Lajur menegak, Nombor = Baris melintang.</p></div>
           <div class="g1-step"><div class="num">3</div><h3>⭐ Selamatkan Gotham</h3><p class="g1-muted">Ketik petak yang tepat untuk melengkapkan misi dan dapatkan 10 mata wira!</p></div>
         </div>
-        <div class="g1-mission-box" style="margin-top:20px"><b>💡 Tip Batcomputer:</b> Cari huruf paksi mendatar dahulu (A hingga F), kemudian cari nombor baris (1 hingga 6). Contoh: (C, 3) = Lajur C, Baris 3.</div>
+        <div class="g1-mission-box" style="margin-top:16px"><b>💡 Tip Batcomputer:</b> Cari huruf paksi mendatar dahulu (A hingga F), kemudian cari nombor baris (1 hingga 6). Contoh: (C, 3) = Lajur C, Baris 3.</div>
       </div>
     </section>
 
-    <!-- PETA ZON -->
     <section class="g1-screen" id="map">
       <div class="g1-panel">
         <div class="g1-section-head"><div><span class="g1-eyebrow">RADAR PETA GOTHAM</span><h2>Pilih Misi Superhero</h2><p class="g1-muted">Pilih sektor operasi Batman kamu.</p></div><button class="g1-btn secondary" onclick="showScreen('home')">⌂ Menu Utama</button></div>
         <div class="g1-worlds">
-          <article class="g1-world-card forest" id="worldCard0"><span class="g1-badge">ZON 1 • AKTIF</span><div class="g1-world-icon">🌃</div><h3>Bandar Gotham</h3><p>Jejak gajet Batman dan selamatkan mangsa daripada penjahat.</p><button onclick="startWorld(0)">Masuki Gotham →</button></article>
+          <article class="g1-world-card forest" id="worldCard0"><span class="g1-badge">ZON 1 • AKTIF</span><div class="g1-world-icon">🌃</div><h3>Bandar Gotham</h3><p>Jejak gajet Batman dan selamatkan orang awam daripada ancaman penjahat.</p><button onclick="startWorld(0)">Masuki Gotham →</button></article>
           <article class="g1-world-card treasure-world locked" id="worldCard1"><span class="g1-badge" id="badge1">🔒 DIKUNCI</span><div class="g1-world-icon">🦇</div><h3>Vault Batcave</h3><p>Nyahkod kunci koordinat rahsia di dalam Batcave untuk mengambil semula gajet Wayne Tech.</p><button id="worldBtn1" onclick="startWorld(1)">Selesaikan Zon 1 dahulu</button></article>
           <article class="g1-world-card space locked" id="worldCard2"><span class="g1-badge" id="badge2">🔒 DIKUNCI</span><div class="g1-world-icon">🚀</div><h3>Stesen Watchtower</h3><p>Bantu Justice League mencari reaktor tenaga untuk menghentikan serangan alien.</p><button id="worldBtn2" onclick="startWorld(2)">Selesaikan Zon 2 dahulu</button></article>
         </div>
@@ -332,7 +262,6 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
       </div>
     </section>
 
-    <!-- SKRIN PERMAINAN (GAMEPLAY) -->
     <section class="g1-screen" id="game">
       <div class="g1-panel">
         <div class="g1-section-head"><div><span class="g1-eyebrow" id="worldEyebrow">ZON 1</span><h2 id="worldTitle">Bandar Gotham</h2><p class="g1-muted" id="worldDescription">Cari sasaran pada grid radar koordinat.</p></div><button class="g1-btn secondary" onclick="showScreen('map')">🗺️ Radar Peta</button></div>
@@ -340,7 +269,7 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
           <div class="g1-game-board">
             <div class="g1-col-labels"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span></div>
             <div class="g1-board-line"><div class="g1-row-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div><div class="g1-grid" id="grid"></div></div>
-            <p class="g1-small" style="margin-top:12px">Ketik petak pada radar untuk menghantar Batman ke lokasi tersebut.</p>
+            <p class="g1-small">Ketik petak pada radar untuk menghantar Batman ke lokasi tersebut.</p>
           </div>
           <div class="g1-side-panel">
             <div class="g1-mission-box"><div class="g1-mission-title">🎯 Misi Batman</div><div id="missionText">Jejak gajet Batman!</div><div class="g1-target-big" id="targetCoord">(C, 3)</div><div class="g1-small" id="targetHint">Di manakah sasaran?</div><div class="g1-progressline"><div id="progressFill"></div></div><p class="g1-small" id="progressText">0 / 5 sasaran</p></div>
@@ -352,10 +281,9 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
       </div>
     </section>
 
-    <!-- KEMENANGAN -->
     <section class="g1-screen" id="victory">
       <div class="g1-panel g1-center">
-        <div style="font-size:80px;margin:12px">🦇</div><span class="g1-eyebrow">MISI SUPERHERO SELESAI</span>
+        <div style="font-size:76px;margin:12px">🦇</div><span class="g1-eyebrow">MISI SUPERHERO SELESAI</span>
         <h2 id="victoryTitle">Syabas, Batman!</h2>
         <p class="g1-lead" style="margin:10px auto">Kemahiran koordinat kamu telah menyelamatkan zon ini daripada kemusnahan!</p>
         <div class="g1-stats-grid"><div class="g1-stat-card">⭐ Skor Misi<strong id="missionScore">0</strong></div><div class="g1-stat-card">🎯 Ketepatan<strong id="missionCorrect">0/5</strong></div><div class="g1-stat-card">🏅 Lencana<strong id="missionBadge">1</strong></div></div>
@@ -364,7 +292,6 @@ button:hover{transform:translateY(-2px);filter:brightness(1.1)}
       </div>
     </section>
 
-    <!-- PENCAPAIAN -->
     <section class="g1-screen" id="achievements">
       <div class="g1-panel">
         <div class="g1-section-head"><div><span class="g1-eyebrow">GALERI WIRA</span><h2>🏆 Pusat Pencapaian Batman</h2><p class="g1-muted">Rekod perkhidmatan disimpan dalam Batcomputer.</p></div><button class="g1-btn secondary" onclick="showScreen('map')">← Kembali</button></div>
@@ -441,29 +368,6 @@ function switchGameMode(mode) {
   document.getElementById('game1-root').classList.toggle('active', mode === 1);
   document.getElementById('game2-root').classList.toggle('active', mode === 2);
 }
-
-/* DEMO INTERAKTIF MOD BELAJAR */
-(function(){
-  const demoGrid = document.getElementById('learnDemoGrid');
-  const readout = document.getElementById('demoReadout');
-  const cols = ['A','B','C','D'];
-  
-  if(demoGrid) {
-    for(let r=3; r>=1; r--){
-      for(let c=0; c<4; c++){
-        let cell = document.createElement('div');
-        cell.className = 'learn-cell';
-        cell.textContent = `${cols[c]}${r}`;
-        cell.addEventListener('click', ()=>{
-          document.querySelectorAll('.learn-cell').forEach(el=>el.classList.remove('active-demo'));
-          cell.classList.add('active-demo');
-          readout.innerHTML = `Koordinat Dipilih: <span style="color:#1ea7fd">(${cols[c]}, ${r})</span><br><small style="font-size:13px;color:#8ba2c0">Lajur ${cols[c]} • Baris ${r}</small>`;
-        });
-        demoGrid.appendChild(cell);
-      }
-    }
-  }
-})();
 
 /* BATMAN GAME LOGIC */
 (function(){
